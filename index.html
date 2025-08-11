@@ -96,6 +96,20 @@
   </footer>
 
   <script>
+    // Função para salvar a imagem no localStorage
+    function saveImageToStorage(imageId, dataURL) {
+      try {
+        localStorage.setItem(imageId, dataURL);
+      } catch (e) {
+        console.warn('Não foi possível salvar a imagem no localStorage:', e);
+      }
+    }
+
+    // Função para carregar a imagem do localStorage
+    function loadImageFromStorage(imageId) {
+      return localStorage.getItem(imageId);
+    }
+
     // Função para carregar a imagem 1
     document.getElementById('imageInput1').addEventListener('change', function(event) {
       const file = event.target.files[0];  // Pega o arquivo selecionado
@@ -104,6 +118,7 @@
       reader.onload = function(e) {
         // Atualiza a imagem com a imagem carregada
         document.getElementById('uploadedImage1').src = e.target.result;
+        saveImageToStorage('uploadedImage1', e.target.result); // Salva no localStorage
       }
 
       // Lê o arquivo como uma URL de dados (base64)
@@ -120,11 +135,26 @@
       reader.onload = function(e) {
         // Atualiza a imagem com a imagem carregada
         document.getElementById('uploadedImage2').src = e.target.result;
+        saveImageToStorage('uploadedImage2', e.target.result); // Salva no localStorage
       }
 
       // Lê o arquivo como uma URL de dados (base64)
       if (file) {
         reader.readAsDataURL(file);
+      }
+    });
+
+    // Ao carregar a página, recuperar as imagens armazenadas no localStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      const img1 = loadImageFromStorage('uploadedImage1');
+      const img2 = loadImageFromStorage('uploadedImage2');
+      
+      if (img1) {
+        document.getElementById('uploadedImage1').src = img1;
+      }
+
+      if (img2) {
+        document.getElementById('uploadedImage2').src = img2;
       }
     });
   </script>
