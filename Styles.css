@@ -1,11 +1,9 @@
-/* Definindo a cor de fundo e a fonte do corpo da página */
 body {
   background-color: #f5e6ff;
   font-family: Arial, sans-serif;
   padding: 20px;
 }
 
-/* Estilo do título principal */
 h1 {
   color: #800080;
   font-size: 36px;
@@ -14,7 +12,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Estilo do parágrafo */
 p {
   color: #333;
   font-size: 20px;
@@ -23,7 +20,6 @@ p {
   margin: 0 auto 20px;
 }
 
-/* Estilo das imagens */
 img {
   display: block;
   margin: 20px auto;
@@ -33,7 +29,6 @@ img {
   height: auto;
 }
 
-/* Estilo do bloco de destaque */
 .highlight {
   background-color: #dec1f7;
   padding: 10px 15px;
@@ -43,7 +38,6 @@ img {
   max-width: 800px;
 }
 
-/* Estilo do rodapé */
 footer {
   text-align: center;
   font-size: 14px;
@@ -51,15 +45,13 @@ footer {
   margin-top: 40px;
 }
 
-/* Estilo do contêiner de imagens */
 .image-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  display: flex; /* Usando flexbox */
+  justify-content: center; /* Alinha as imagens horizontalmente no centro */
+  gap: 20px; /* Adiciona um espaço entre as imagens */
 }
 
-/* Estilo do input de arquivos de imagem */
-input[type="file"] {
-  display: block;
-  margin: 20px auto;
+.image-container img {
+  max-width: 45%; /* Limita o tamanho das imagens, ajustando para elas ficarem lado a lado */
+  height: auto; /* Mantém a proporção das imagens */
 }
