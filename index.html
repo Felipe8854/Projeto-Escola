@@ -18,88 +18,18 @@
   </div>
 
   <div class="image-container">
-    <div>
-      <input type="file" id="imageInput1" accept="image/*">
-      <img id="uploadedImage1" src="" alt="Imagem 1">
-    </div>
-    <div>
-      <input type="file" id="imageInput2" accept="image/*">
-      <img id="uploadedImage2" src="" alt="Imagem 2">
-    </div>
+    <!-- Exemplo de imagem direta -->
+    <img src="imagem/images (1).jpeg" alt="agosto lilas">
+    <img src="imagem/images (2).jpeg" alt="imagem exemplo 2">
   </div>
 
   <p>
     A campanha busca promover ações educativas e preventivas, fortalecendo os direitos das mulheres e a importância do respeito em todos os espaços da sociedade. É fundamental que cada um faça sua parte para construir um futuro mais justo, igualitário e livre de violência.
   </p>
 
-  <img src="imagem/images (1).jpeg" alt="agosto lilas"
-
   <footer>
     site criado na aula de programação -Felipe - 2ºano do Ensino Médio
   </footer>
 
-  <script>
-    // Função para salvar a imagem no localStorage
-    function saveImageToStorage(imageId, dataURL) {
-      try {
-        localStorage.setItem(imageId, dataURL);
-      } catch (e) {
-        console.warn('Não foi possível salvar a imagem no localStorage:', e);
-      }
-    }
-
-    // Função para carregar a imagem do localStorage
-    function loadImageFromStorage(imageId) {
-      return localStorage.getItem(imageId);
-    }
-
-    // Função para carregar a imagem 1
-    document.getElementById('imageInput1').addEventListener('change', function(event) {
-      const file = event.target.files[0];  // Pega o arquivo selecionado
-      const reader = new FileReader();    // Cria o leitor de arquivos
-
-      reader.onload = function(e) {
-        // Atualiza a imagem com a imagem carregada
-        document.getElementById('uploadedImage1').src = e.target.result;
-        saveImageToStorage('uploadedImage1', e.target.result); // Salva no localStorage
-      }
-
-      // Lê o arquivo como uma URL de dados (base64)
-      if (file) {
-        reader.readAsDataURL(file);
-      }
-    });
-
-    // Função para carregar a imagem 2
-    document.getElementById('imageInput2').addEventListener('change', function(event) {
-      const file = event.target.files[0];  // Pega o arquivo selecionado
-      const reader = new FileReader();    // Cria o leitor de arquivos
-
-      reader.onload = function(e) {
-        // Atualiza a imagem com a imagem carregada
-        document.getElementById('uploadedImage2').src = e.target.result;
-        saveImageToStorage('uploadedImage2', e.target.result); // Salva no localStorage
-      }
-
-      // Lê o arquivo como uma URL de dados (base64)
-      if (file) {
-        reader.readAsDataURL(file);
-      }
-    });
-
-    // Ao carregar a página, recuperar as imagens armazenadas no localStorage
-    window.addEventListener('DOMContentLoaded', () => {
-      const img1 = loadImageFromStorage('uploadedImage1');
-      const img2 = loadImageFromStorage('uploadedImage2');
-      
-      if (img1) {
-        document.getElementById('uploadedImage1').src = img1;
-      }
-
-      if (img2) {
-        document.getElementById('uploadedImage2').src = img2;
-      }
-    });
-  </script>
 </body>
 </html>
