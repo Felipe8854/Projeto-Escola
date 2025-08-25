@@ -1,100 +1,52 @@
-/* Cor de fundo e fontes */
+/* Estilo geral da página */
 body {
-  background-color: #f5e6ff;  /* Cor suave de fundo */
   font-family: Arial, sans-serif;
-  padding: 20px;
-  color: #333;  /* Cor do texto */
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
-/* Estilo do título principal */
 h1 {
-  color: #800080;  /* Roxo para o título */
-  font-size: 36px;
   text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave no título */
+  color: #6a2e92; /* Cor roxa do Agosto Lilás */
+  margin-top: 20px;
 }
 
-/* Estilo do parágrafo */
 p {
-  color: #444;  /* Cor de texto mais escura para melhor contraste */
-  font-size: 20px;
+  text-align: justify;
+  padding: 0 20px;
+  color: #333;
   line-height: 1.6;
-  max-width: 800px;
-  margin: 0 auto 20px;
 }
 
-/* Estilo das imagens */
-img {
-  display: block;
-  margin: 20px auto;
-  border: 4px solid #800080;
-  border-radius: 12px;
-  max-width: 100%;  /* Ajusta a largura da imagem para caber na tela */
-  height: auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave nas imagens */
-  transition: transform 0.3s ease-in-out; /* Adiciona transição para o efeito hover */
-}
-
-img:hover {
-  transform: scale(1.05);  /* Efeito de zoom ao passar o mouse */
-}
-
-/* Estilo do bloco de destaque */
 .highlight {
-  background-color: #dec1f7; /* Cor suave de fundo */
-  padding: 10px 15px;
-  border-left: 5px solid #800080;
+  background-color: #6a2e92;
+  color: white;
+  padding: 10px;
+  text-align: center;
   font-weight: bold;
-  margin: 20px auto;
-  max-width: 800px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra no bloco */
-  transition: background-color 0.3s ease; /* Transição suave no hover */
+  margin: 20px 0;
 }
 
-.highlight:hover {
-  background-color: #d8a5e6;  /* Cor ligeiramente mais escura no hover */
-}
-
-/* Rodapé */
 footer {
   text-align: center;
-  font-size: 14px;
-  color: #fff;
-  margin-top: 40px;
-  background-color: #800080; /* Cor de fundo roxa para o rodapé */
   padding: 10px;
-  border-radius: 5px;
+  background-color: #6a2e92;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
-/* Estilo do contêiner de imagens */
+/* Estilo para a seção de imagens */
 .image-container {
-  display: flex; /* Usando flexbox */
-  justify-content: center; /* Alinha as imagens horizontalmente no centro */
-  gap: 20px; /* Adiciona um espaço entre as imagens */
-  flex-wrap: wrap; /* Garante que as imagens se ajustem em telas menores */
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espaçamento entre as imagens */
+  margin-top: 20px;
 }
 
-/* Ajuste nas imagens dentro do contêiner */
 .image-container img {
-  max-width: 45%; /* Limita o tamanho das imagens, ajustando para elas ficarem lado a lado */
-  height: auto; /* Mantém a proporção das imagens */
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
-  /* Ajusta a largura das imagens para 100% em telas pequenas */
-  .image-container img {
-    max-width: 100%;
-  }
-
-  /* Ajuste do tamanho do texto */
-  h1 {
-    font-size: 28px;
-  }
-
-  p {
-    font-size: 18px;
-  }
+  width: 300px; /* Ajuste o tamanho conforme necessário */
+  height: auto;
 }
