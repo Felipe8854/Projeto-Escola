@@ -1,55 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Consciência Negra - Galeria e Informações</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projeto JS Separado</title>
 </head>
 <body>
-<header>
-  <nav>
-    <button id="menu-galeria" class="active">Galeria</button>
-    <button id="menu-racismo">Luta contra o Racismo</button>
-    <button id="menu-cultura">Cultura Afro-brasileira</button>
-    <button id="menu-historico">História e Legado</button>
-    <button id="menu-consciencia">Conscientização e Educação</button>
-    <button id="menu-literatura">Literatura Negra</button>
-  </nav>
-</header>
+  <h1>Exemplo Separando HTML e JS</h1>
 
-<section id="galeria-section">
-  <h1>Consciência Negra - Galeria de Fotos</h1>
-  <p id="intro-text">
-    A Consciência Negra é uma data importante que celebra a cultura, a história e a resistência do povo negro no Brasil e no mundo. É momento de refletir sobre igualdade, respeito e o valor da diversidade.
-  </p>
-  <img id="main-photo" src="imagem/Black_Conscience_Day_by_Latuff2.jpg" alt="Imagem principal" />
-  <p id="photo-description">
-    Foto 1: Romper as correntes da escravidão simboliza a liberdade e a justiç.
-  </p>
-  <div class="gallery">
-    <img class="thumb active" src="imagem/Black_Conscience_Day_by_Latuff2.jpg" alt="Dia da Consciência Negra" onclick="changePhoto(this, 'imagem/Black_Conscience_Day_by_Latuff2.jpg', 'Foto 1: Dia da Consciência Negra – um marco de luta, memória e valorização da cultura afro-brasileira.')" />
-    <img class="thumb" src="imagem/capa-racismo.png" alt="Punho cerrado simbolizando resistência" onclick="changePhoto(this, 'imagem/capa-racismo.png', 'Foto 2: O punho cerrado representa força, resistência e unidade na luta contra o racismo.')" />
-    <img class="thumb" src="imagem/dia_consciencia_negra.png" alt="Correntes rompidas simbolizando liberdade" onclick="changePhoto(this, 'imagem/dia_consciencia_negra.png', 'Foto 3: Romper as correntes da escravidão simboliza a liberdade e a justiça.')" />
-    <img class="thumb" src="imagem/ILUSTRACAO-O-Papel-da-Publicidade-no-combate-ao-Racismo-POR-Erick-Nunes.png" alt="Imagem contra o racismo" onclick="changePhoto(this, 'imagem/ILUSTRACAO-O-Papel-da-Publicidade-no-combate-ao-Racismo-POR-Erick-Nunes.png', 'Foto 4: O racismo fere e exclui – é preciso combatê-lo para garantir igualdade e respeito.')" />
-  </div>
-  <p style="max-width:700px; margin: 0 auto; color:#f0c674; font-style: italic;">
-    As imagens acima representam luta, resistência, memória e o combate ao racismo. Que elas inspirem a reflexão e o respeito pela diversidade. #ConsciênciaNegra
-  </p>
-</section>
+  <button id="meuBotao">Clique aqui</button>
 
-<section id="info-section-2" class="hidden">
-  <h1>Mais Sobre a Luta Contra o Racismo</h1>
-  <div class="info-section">
-    <img src="imagem/clay-banks-gr0wnd7pbjk-unsplash_1.jpg" alt="Imagem de protesto contra o racismo" />
-    <p>A luta contra o racismo é uma jornada contínua por igualdade e justiça social. No Brasil, ela tem raízes históricas profundas, iniciadas com a escravidão e se perpetuando até hoje através do racismo estrutural. Desde a abolição da escravatura, a ausência de políticas de inclusão social e econômica para a população negra forçou uma luta constante por dignidade e espaço. Movimentos negros no século XX e XXI têm sido cruciais para pressionar por mudanças. Iniciativas como cotas raciais em universidades e o Estatuto da Igualdade Racial, bem como a Lei 10.639/03, buscam promover a inclusão e o reconhecimento da história afro-brasileira. Movimentos globais, como o Black Lives Matter, também denunciam o racismo sistêmico. A luta envolve não apenas políticas públicas, mas também mudanças culturais e a educação antirracista, com o objetivo de garantir uma sociedade mais igualitária e respeitosa para todos.</p>
-    <h2>O que é racismo?</h2>
-    <img src="imagem/racismo-no-brasil-scaled.jpg" alt="Imagem ilustrativa sobre o racismo" />
-    <p>Racismo é qualquer forma de discriminação, exclusão ou violência baseada na cor da pele, origem étnica ou racial. Ele pode se manifestar de forma direta (como insultos e agressões) ou estrutural (como desigualdades sistêmicas no acesso à educação, saúde, emprego e justiça).</p>
-    <h2>Como prevenir e combater?</h2>
-    <img src="imagem/post_thumbnail-21399178bb628f4fdac9c5efcf650345.jpeg" alt="Imagem ilustrativa sobre a prevenção do racismo" />
-    <ul>
-      <li>**Eduque-se** e eduque os outros sobre a história e cultura afro-brasileira, buscando materiais de fontes diversas.</li>
-      <li>**Denuncie** casos de racismo em todas as esferas (legal, social e virtual).</li>
-      <li>**Promova o respeito** e a igualdade nas suas redes e comunidades, desafiando preconceitos.</li>
-      <li
+  <!-- Link para o arquivo JavaScript externo -->
+  <script src="script.js"></script>
+</body>
+</html>
