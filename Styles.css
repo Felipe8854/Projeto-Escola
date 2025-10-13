@@ -1,52 +1,143 @@
-/* Estilo geral da página */
 body {
   font-family: Arial, sans-serif;
+  background: #1a1a1a;
+  color: #f1f1f1;
+  text-align: center;
+  padding: 20px;
   margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #f39c12;
+  padding: 15px 0;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+nav button {
+  background-color: #f39c12;
+  border: none;
+  color: #1a1a1a;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 140px;
+}
+
+nav button:hover {
+  background-color: #e67e22;
+}
+
+nav button.active {
+  background-color: #d87f0a;
+  box-shadow: 0 0 8px #d87f0a;
+}
+
+section {
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+
+section.hidden {
+  display: none;
 }
 
 h1 {
-  text-align: center;
-  color: #6a2e92; /* Cor roxa do Agosto Lilás */
-  margin-top: 20px;
+  color: #f39c12;
+  margin-bottom: 10px;
 }
 
-p {
-  text-align: justify;
-  padding: 0 20px;
-  color: #333;
-  line-height: 1.6;
+#intro-text {
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #ddd;
 }
 
-.highlight {
-  background-color: #6a2e92;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-  margin: 20px 0;
+#main-photo {
+  width: 80%;
+  max-width: 700px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #f39c12;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
 }
 
-footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #6a2e92;
-  color: white;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+#photo-description {
+  max-width: 700px;
+  margin: 10px auto 30px auto;
+  font-size: 1rem;
+  font-style: italic;
+  color: #f0c674;
+  min-height: 60px;
 }
 
-/* Estilo para a seção de imagens */
-.image-container {
+.gallery {
   display: flex;
   justify-content: center;
-  gap: 20px; /* Espaçamento entre as imagens */
-  margin-top: 20px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.image-container img {
-  width: 300px; /* Ajuste o tamanho conforme necessário */
-  height: auto;
+.thumb {
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.thumb.active {
+  transform: scale(1.1);
+  border: 3px solid #f39c12;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav button {
+    min-width: 120px;
+    font-size: 1rem;
+  }
+
+  #main-photo {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav button {
+    min-width: 100px;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .thumb {
+    width: 75px;
+    height: 50px;
+  }
+
+  #intro-text {
+    font-size: 1rem;
+  }
+
+  .info-section {
+    padding: 10px;
+  }
 }
