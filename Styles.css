@@ -1,143 +1,142 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
-  background: #1a1a1a;
-  color: #f1f1f1;
-  text-align: center;
-  padding: 20px;
-  margin: 0;
+  background-color: #222;
+  color: #eee;
+  line-height: 1.6;
+  padding: 10px;
 }
+
 header {
-  background-color: #f39c12;
-  padding: 15px 0;
+  background-color: #111;
+  padding: 10px 0;
   margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
+
 nav {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 10px;
 }
+
 nav button {
-  background-color: #f39c12;
+  background-color: #444;
   border: none;
-  color: #1a1a1a;
-  padding: 10px 18px;
-  font-size: 1rem;
-  border-radius: 6px;
+  color: #eee;
+  padding: 10px 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  min-width: 140px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
+
+nav button.active,
 nav button:hover {
-  background-color: #e67e22;
+  background-color: #f0c674;
+  color: #222;
 }
-nav button.active {
-  background-color: #d87f0a;
-  box-shadow: 0 0 8px #d87f0a;
-}
-section {
-  max-width: 900px;
-  margin: 0 auto 40px auto;
-  text-align: center;
-}
-section.hidden {
-  display: none;
-}
+
 h1 {
-  color: #f39c12;
+  text-align: center;
   margin-bottom: 10px;
+  color: #f0c674;
 }
-#intro-text {
-  max-width: 700px;
-  margin: 0 auto 30px auto;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: #ddd;
-}
-#main-photo {
-  width: 80%;
-  max-width: 700px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #f39c12;
-  margin-bottom: 15px;
-  transition: all 0.3s ease;
-}
+
+#intro-text,
 #photo-description {
   max-width: 700px;
-  margin: 10px auto 30px auto;
-  font-size: 1rem;
-  font-style: italic;
-  color: #f0c674;
-  min-height: 60px;
+  margin: 0 auto 20px auto;
+  font-size: 1.1em;
+  color: #ddd;
+  text-align: center;
 }
+
 .gallery {
   display: flex;
   justify-content: center;
   gap: 10px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
-  margin-top: 15px;
-  margin-bottom: 25px;
 }
-.thumb {
-  width: 100px;
-  height: 70px;
+
+.gallery img.thumb {
+  width: 120px;
+  height: 80px;
   object-fit: cover;
-  border-radius: 6px;
   cursor: pointer;
-  border: 2px solid transparent;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  border: 3px solid transparent;
+  border-radius: 4px;
+  transition: border-color 0.3s;
 }
-.thumb:hover {
-  border-color: #f39c12;
-  transform: scale(1.05);
+
+.gallery img.thumb.active,
+.gallery img.thumb:hover {
+  border-color: #f0c674;
 }
-.thumb.active {
-  border-color: #f39c12;
-  box-shadow: 0 0 10px #f39c12;
+
+#main-photo {
+  display: block;
+  max-width: 700px;
+  margin: 0 auto 10px auto;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #f0c674aa;
 }
+
+.hidden {
+  display: none;
+}
+
 .info-section {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  text-align: left;
   color: #ddd;
 }
-.info-section h2 {
-  color: #f39c12;
-  margin-top: 30px;
+
+.info-section img {
+  max-width: 100%;
+  display: block;
+  margin: 10px auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #f0c674aa;
 }
-.info-section h3 {
-  color: #f0c674;
-  margin-top: 0;
-}
-.info-section p, .info-section ul {
-  margin: 10px 0 20px;
+
+.info-section p {
+  margin: 10px 0 20px 0;
+  font-size: 1.1em;
   line-height: 1.5;
 }
+
+.info-section h2 {
+  color: #f0c674;
+  margin-bottom: 8px;
+}
+
 .info-section ul {
-  padding-left: 20px;
-}
-.info-section img {
-  width: 100%;
-  max-width: 700px;
-  border-radius: 10px;
+  list-style-type: disc;
+  margin-left: 40px;
   margin-bottom: 20px;
-  box-shadow: 0 0 12px #f39c12;
 }
-@media (max-width: 600px) {
-  #main-photo {
-    width: 100%;
+
+.info-section ul li {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Responsividade */
+@media(max-width: 768px) {
+  .gallery {
+    gap: 5px;
   }
-  .thumb {
-    width: 80px;
-    height: 55px;
-  }
-  nav {
-    gap: 10px;
-  }
-  nav button {
-    min-width: 110px;
-    font-size: 0.9rem;
-    padding: 8px 12px;
+
+  .gallery img.thumb {
+    width: 90px;
+    height: 60px;
   }
 }
+
