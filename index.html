@@ -1,141 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Consciência Negra - Galeria e Informações</title>
-<link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Seu Projeto</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<header>
-  <nav>
-    <button id="menu-galeria" class="active">Galeria</button>
-    <button id="menu-racismo">Luta contra o Racismo</button>
-    <button id="menu-cultura">Cultura Afro-brasileira</button>
-    <button id="menu-historico">História e Legado</button>
-    <button id="menu-consciencia">Conscientização e Educação</button>
-    <button id="menu-literatura">Literatura Negra</button>
-  </nav>
-</header>
+    <header>
+        <h1>Bem-vindo ao Seu Projeto</h1>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section id="galeria-section">
-  <h1>Consciência Negra - Galeria de Fotos</h1>
-  <p id="intro-text">
-    A Consciência Negra é uma data importante que celebra a cultura, a história e a resistência do povo negro no Brasil e no mundo. É momento de refletir sobre igualdade, respeito e o valor da diversidade.
-  </p>
-  <img id="main-photo" src="imagem/Black_Conscience_Day_by_Latuff2.jpg" alt="Imagem principal" />
-  <p id="photo-description">
-    Foto 1: Romper as correntes da escravidão simboliza a liberdade e a justiç.
-  </p>
-  <div class="gallery">
-    <img class="thumb active" src="imagem/Black_Conscience_Day_by_Latuff2.jpg" alt="Dia da Consciência Negra" onclick="changePhoto(this, 'imagem/Black_Conscience_Day_by_Latuff2.jpg', 'Foto 1: Dia da Consciência Negra – um marco de luta, memória e valorização da cultura afro-brasileira.')" />
-    <img class="thumb" src="imagem/capa-racismo.png" alt="Punho cerrado simbolizando resistência" onclick="changePhoto(this, 'imagem/capa-racismo.png', 'Foto 2: O punho cerrado representa força, resistência e unidade na luta contra o racismo.')" />
-    <img class="thumb" src="imagem/dia_consciencia_negra.png" alt="Correntes rompidas simbolizando liberdade" onclick="changePhoto(this, 'imagem/dia_consciencia_negra.png', 'Foto 3: Romper as correntes da escravidão simboliza a liberdade e a justiça.')" />
-    <img class="thumb" src="imagem/ILUSTRACAO-O-Papel-da-Publicidade-no-combate-ao-Racismo-POR-Erick-Nunes.png" alt="Imagem contra o racismo" onclick="changePhoto(this, 'imagem/ILUSTRACAO-O-Papel-da-Publicidade-no-combate-ao-Racismo-POR-Erick-Nunes.png', 'Foto 4: O racismo fere e exclui – é preciso combatê-lo para garantir igualdade e respeito.')" />
-  </div>
-  <p style="max-width:700px; margin: 0 auto; color:#f0c674; font-style: italic;">
-    As imagens acima representam luta, resistência, memória e o combate ao racismo. Que elas inspirem a reflexão e o respeito pela diversidade. #ConsciênciaNegra
-  </p>
-</section>
+    <main>
+        <section id="home">
+            <h2>Home</h2>
+            <p>Conteúdo da página inicial.</p>
+        </section>
 
-<section id="info-section-2" class="hidden">
-  <h1>Mais Sobre a Luta Contra o Racismo</h1>
-  <div class="info-section">
-    <img src="imagem/clay-banks-gr0wnd7pbjk-unsplash_1.jpg" alt="Imagem de protesto contra o racismo" />
-    <p>A luta contra o racismo é uma jornada contínua por igualdade e justiça social. No Brasil, ela tem raízes históricas profundas, iniciadas com a escravidão e se perpetuando até hoje através do racismo estrutural. Desde a abolição da escravatura, a ausência de políticas de inclusão social e econômica para a população negra forçou uma luta constante por dignidade e espaço. Movimentos negros no século XX e XXI têm sido cruciais para pressionar por mudanças. Iniciativas como cotas raciais em universidades e o Estatuto da Igualdade Racial, bem como a Lei 10.639/03, buscam promover a inclusão e o reconhecimento da história afro-brasileira. Movimentos globais, como o Black Lives Matter, também denunciam o racismo sistêmico. A luta envolve não apenas políticas públicas, mas também mudanças culturais e a educação antirracista, com o objetivo de garantir uma sociedade mais igualitária e respeitosa para todos.</p>
-    <h2>O que é racismo?</h2>
-    <img src="imagem/racismo-no-brasil-scaled.jpg" alt="Imagem ilustrativa sobre o racismo" />
-    <p>Racismo é qualquer forma de discriminação, exclusão ou violência baseada na cor da pele, origem étnica ou racial. Ele pode se manifestar de forma direta (como insultos e agressões) ou estrutural (como desigualdades sistêmicas no acesso à educação, saúde, emprego e justiça).</p>
-    <h2>Como prevenir e combater?</h2>
-    <img src="imagem/post_thumbnail-21399178bb628f4fdac9c5efcf650345.jpeg" alt="Imagem ilustrativa sobre a prevenção do racismo" />
-    <ul>
-      <li>**Eduque-se** e eduque os outros sobre a história e cultura afro-brasileira, buscando materiais de fontes diversas.</li>
-      <li>**Denuncie** casos de racismo em todas as esferas (legal, social e virtual).</li>
-      <li>**Promova o respeito** e a igualdade nas suas redes e comunidades, desafiando preconceitos.</li>
-      <li>**Apoie** negócios, artistas e movimentos negros, fomentando o empoderamento econômico e cultural.</li>
-    </ul>
-    <h2>Protestos e movimentos</h2>
-    <img src="imagem/image_processing20230804-2074-12hcak9.jpeg" alt="Imagem de protesto contra racismo" />
-    <p>Protestos antirracistas são manifestações que buscam combater a discriminação e a violência contra a população negra, como os movimentos Black Lives Matter e o Movimento Negro Unificado (MNU). Seu objetivo é garantir igualdade racial, denunciar o racismo estrutural e promover políticas públicas inclusivas. Por outro lado, movimentos racistas defendem a desigualdade racial, como os grupos supremacistas brancos, que perpetuam a discriminação e a violência contra negros. A luta contra o racismo é uma batalha contínua entre essas duas forças, sendo fundamental a resistência antirracista para construir uma sociedade mais justa e igualitária.</p>
-  </div>
-</section>
+        <section id="sobre">
+            <h2>Sobre</h2>
+            <p>Informações sobre o projeto.</p>
+        </section>
 
-<section id="info-section-3" class="hidden">
-  <h1>Reflexões sobre a Cultura Afro-brasileira</h1>
-  <div class="info-section">
-    <img src="imagem/Encontro_estadual_de_maracatus.jpg" alt="Imagem de cultura afro-brasileira" />
-    <p>A cultura afro-brasileira é uma fusão das tradições africanas com elementos indígenas e europeus, resultando em uma identidade única e rica. Ela se manifesta de várias formas, como na música (samba, funk), nas danças (capoeira, samba de roda), na religião (candomblé, umbanda) e na culinária (feijoada, acarajé). Essas expressões culturais são fundamentais para a resistência e preservação da história negra no Brasil. Refletir sobre essa cultura é essencial para combater o racismo e reconhecer a importância das contribuições do povo negro para a formação da identidade brasileira.</p>
-    <h2>A Influência do Samba</h2>
-    <img src="imagem/98f33137-6e3d-40a6-80e2-993b8acc1c9d.jpg" alt="Imagem de samba" />
-    <p>O samba tem raízes na cultura afro-brasileira, originado nas comunidades negras do Rio de Janeiro no início do século XX, misturando influências africanas, indígenas e portuguesas. Com ritmos sincopados e instrumentos como surdo, cuíca e pandeiro, o samba se popularizou e se tornou símbolo nacional, expressando alegria, resistência e identidade.</p>
-    <h2>A Capoeira como Resistência</h2>
-    <img src="imagem/ilustra-o-de-capoeira-desenhada_52683-136858.jpg" alt="Imagem de capoeiristas jogando" />
-    <p>A Capoeira, classificada pela UNESCO como Patrimônio Cultural Imaterial da Humanidade, é mais do que uma luta ou uma dança; é uma manifestação cultural que carrega a história de resistência dos escravizados. Desenvolvida no Brasil Colônia, era uma forma disfarçada de treinamento de combate. Seus movimentos, acompanhados pelo berimbau e outros instrumentos, simbolizam a liberdade e a criatividade do povo negro.</p>
-  </div>
-</section>
+        <section id="contato">
+            <h2>Contato</h2>
+            <p>Formas de contato aqui.</p>
+        </section>
+    </main>
 
-<section id="info-section-4" class="hidden">
-  <h1>História e Legado da Consciência Negra</h1>
-  <div class="info-section">
-    <img src="imagem/farpa.jpg" alt="Imagem histórica do povo negro no Brasil" />
-    <p>A história da população negra no Brasil é marcada por resistência e luta incansável contra a escravidão e o racismo. Desde o período colonial, o povo negro contribuiu profundamente para a cultura, economia e identidade brasileira. A abolição da escravatura em 1888, embora tardia, não resultou em reparação ou inclusão, deixando um legado de desigualdade que perdura. O **Dia da Consciência Negra**, celebrado em 20 de novembro, é um marco. A data homenageia **Zumbi dos Palmares**, líder quilombola que simboliza a luta pela liberdade, dignidade e igualdade, e serve como um momento crucial para a reflexão sobre o passado e a construção de um futuro antirracista.</p>
-    <h2>Quilombos e resistência</h2>
-    <img src="imagem/quilombo_reportagem.jpg" alt="Imagem de quilombo" />
-    <p>Os <strong>quilombos</strong> foram comunidades formadas por escravizados fugitivos que buscavam liberdade e autonomia. Eles representam uma das formas mais antigas de resistência negra no Brasil, mantendo tradições culturais e organizando a luta contra a opressão. Quilombos ainda existem hoje e são símbolo de luta por direitos territoriais e reconhecimento cultural.</p>
-  </div>
-</section>
-
-<!-- Você pode adicionar mais seções conforme sua necessidade -->
-
-<script>
-  const sections = {
-    galeria: document.getElementById('galeria-section'),
-    racismo: document.getElementById('info-section-2'),
-    cultura: document.getElementById('info-section-3'),
-    historico: document.getElementById('info-section-4'),
-    // Adicione os outros ids se forem incluídos
-  };
-
-  const buttons = {
-    galeria: document.getElementById('menu-galeria'),
-    racismo: document.getElementById('menu-racismo'),
-    cultura: document.getElementById('menu-cultura'),
-    historico: document.getElementById('menu-historico'),
-    // Adicione os outros botões se incluídos
-  };
-
-  function hideAllSections() {
-    Object.values(sections).forEach(section => section.classList.add('hidden'));
-    Object.values(buttons).forEach(btn => btn.classList.remove('active'));
-  }
-
-  function showSection(key) {
-    hideAllSections();
-    if(sections[key]) {
-      sections[key].classList.remove('hidden');
-    }
-    if(buttons[key]) {
-      buttons[key].classList.add('active');
-    }
-  }
-
-  buttons.galeria.addEventListener('click', () => showSection('galeria'));
-  buttons.racismo.addEventListener('click', () => showSection('racismo'));
-  buttons.cultura.addEventListener('click', () => showSection('cultura'));
-  buttons.historico.addEventListener('click', () => showSection('historico'));
-
-  // Inicialmente mostra a galeria
-  showSection('galeria');
-
-  // Função para trocar foto da galeria
-  function changePhoto(elem, src, description) {
-    document.getElementById('main-photo').src = src;
-    document.getElementById('photo-description').textContent = description;
-
-    document.querySelectorAll('.gallery img').forEach(img => img.classList.remove('active'));
-    elem.classList.add('active');
-  }
-</script>
-
+    <footer>
+        <p>© 2025 Seu Projeto. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
