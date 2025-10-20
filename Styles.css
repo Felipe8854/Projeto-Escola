@@ -1,192 +1,154 @@
-/* RESET E CONFIGURAÇÕES GERAIS */
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body e fonte */
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background: #1a1a1a; /* Fundo escuro */
-    color: #f1f1f1; /* Texto claro */
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
 }
+
+/* Container principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header e Menu */
 header {
-    background-color: #f39c12; /* Laranja/Ouro */
-    padding: 15px 0;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-}
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 10px; 
-    flex-wrap: wrap;
-    padding: 0 10px;
-}
-/* ESTILO DOS BOTÕES DE NAVEGAÇÃO */
-nav button {
-    background-color: #f39c12;
-    border: 2px solid #1a1a1a; 
-    color: #1a1a1a;
-    padding: 10px 15px;
-    font-size: 0.95rem; 
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 120px;
-    text-transform: uppercase;
-}
-nav button:hover {
-    background-color: #e67e22;
-    color: #fff;
-    border-color: #fff;
-}
-nav button.active {
-    background-color: #d87f0a;
-    color: #fff;
-    border-color: #fff;
-    box-shadow: 0 0 12px rgba(243, 156, 18, 0.9);
-    transform: translateY(-2px);
+  background-color: #004080;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* ESTILO DAS SEÇÕES DE CONTEÚDO */
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav ul li {
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+nav ul li:hover,
+nav ul li.active {
+  background-color: #0066cc;
+}
+
+/* Sessões */
 section {
-    max-width: 950px;
-    margin: 0 auto 40px auto;
-    padding: 25px;
-    background: #2a2a2a; /* Fundo mais claro para o conteúdo */
-    border-radius: 12px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.7);
-    text-align: center;
-}
-section.hidden {
-    display: none;
-}
-h1 {
-    color: #f39c12;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #3a3a3a;
-    font-size: 2rem;
-}
-h2 {
-    color: #f0c674; /* Cor mais suave para sub-títulos */
-    margin-top: 35px;
-    border-left: 6px solid #d87f0a;
-    padding-left: 12px;
-    font-size: 1.5rem;
+  padding: 40px 0;
+  display: none;
 }
 
-/* ESTILO DA GALERIA */
-#intro-text {
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-    font-size: 1.15rem;
-    color: #ddd;
+section.active {
+  display: block;
 }
-#main-photo {
-    width: 90%;
-    max-width: 750px;
-    height: auto; 
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
-    margin-bottom: 15px;
-    object-fit: cover; 
-    border: 3px solid #f39c12;
+
+/* Títulos das sessões */
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #004080;
+  border-bottom: 3px solid #0066cc;
+  padding-bottom: 5px;
 }
-#photo-description {
-    max-width: 750px;
-    margin: 10px auto 30px auto;
-    font-size: 1rem;
-    font-style: italic;
-    color: #f0c674;
-    min-height: 60px;
+
+/* Texto das sessões */
+section p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  max-width: 800px;
 }
+
+/* Imagens dentro das sessões */
+section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+section img:hover {
+  transform: scale(1.05);
+}
+
+/* Galeria de imagens (se houver) */
 .gallery {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
-.thumb {
-    width: 120px; 
-    height: 80px;
-    object-fit: cover;
-    border-radius: 6px;
-    cursor: pointer;
-    border: 3px solid transparent;
-    transition: all 0.2s ease;
-}
-.thumb:hover {
-    border-color: #f39c12;
-    transform: scale(1.08);
-    box-shadow: 0 0 10px #f39c12;
-}
-.thumb.active {
-    border-color: #f39c12;
-    box-shadow: 0 0 15px #f39c12;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
-/* ESTILO DAS INFORMAÇÕES DETALHADAS (SECTIONS 2 A 6) */
-.info-section {
-    max-width: 850px;
-    margin: 0 auto;
-    text-align: left;
-    color: #ddd;
-}
-.info-section p, .info-section ul {
-    margin: 15px 0;
-    line-height: 1.8;
-    font-size: 1.1rem;
-}
-.info-section ul {
-    list-style: disc;
-    padding-left: 35px;
-}
-.info-section img {
-    width: 100%;
-    max-width: 750px;
-    height: auto;
-    border-radius: 10px;
-    margin: 20px 0;
-    box-shadow: 0 0 12px rgba(0,0,0,0.5);
-    border: 2px solid #555;
+.gallery img {
+  width: calc(33.333% - 10px);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
 }
 
-/* RESPONSIVIDADE PARA TELAS PEQUENAS */
+.gallery img:hover,
+.gallery img.selected {
+  border-color: #0066cc;
+}
+
+/* Rodapé */
+footer {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-    nav button {
-        min-width: 100px;
-        font-size: 0.8rem;
-        padding: 8px 10px;
-    }
-    nav {
-        gap: 5px;
-    }
-    section {
-        padding: 15px;
-    }
-    .thumb {
-        width: 90px;
-        height: 60px;
-    }
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .gallery img {
+    width: calc(50% - 10px);
+  }
 }
 
 @media (max-width: 480px) {
-    nav {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    nav button {
-        min-width: unset;
-        width: 100%;
-        margin-bottom: 5px;
-    }
-    h1 {
-        font-size: 1.5rem;
-    }
-    .info-section p {
-        font-size: 1rem;
-    }
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav ul {
+    width: 100%;
+  }
+
+  .gallery img {
+    width: 100%;
+  }
 }
