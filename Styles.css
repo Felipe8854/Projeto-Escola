@@ -22,7 +22,7 @@ header {
   background-color: #1f1f1f;
   padding: 15px 0;
   margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.7);
 }
 
 nav {
@@ -58,7 +58,7 @@ section {
   padding: 20px 30px;
   border-radius: 8px;
   margin-bottom: 40px;
-  box-shadow: 0 0 10px rgba(240, 198, 116, 0.3);
+  box-shadow: 0 0 10px rgba(240,198,116,0.3);
 }
 
 h1 {
@@ -84,7 +84,7 @@ img {
   height: auto;
   border-radius: 8px;
   margin-bottom: 15px;
-  box-shadow: 0 0 10px rgba(240, 198, 116, 0.4);
+  box-shadow: 0 0 10px rgba(240,198,116,0.4);
 }
 
 /* Galeria */
@@ -122,7 +122,7 @@ img {
   max-height: 400px;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(240, 198, 116, 0.7);
+  box-shadow: 0 0 15px rgba(240,198,116,0.7);
 }
 
 #photo-description {
@@ -131,39 +131,6 @@ img {
   color: #f0c674;
   font-style: italic;
   text-align: center;
-}
-
-/* Textos em destaque da galeria */
-#intro-text {
-  max-width: 700px;
-  margin: 0 auto 15px auto;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-align: center;
-}
-
-/* Lista da seção de prevenção */
-ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin-bottom: 15px;
-}
-
-ul li {
-  margin-bottom: 10px;
-  font-size: 1.05rem;
-}
-
-/* Seção escondida */
-.hidden {
-  display: none;
-}
-
-/* Info sections */
-.info-section img {
-  margin-bottom: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(240, 198, 116, 0.5);
 }
 
 /* Responsividade */

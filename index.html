@@ -1,84 +1,166 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Consciência Negra - Galeria e Informações</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
-</head>
-<body>
-  <header>
-    <nav>
-      <button id="menu-galeria" class="active">Galeria</button>
-      <button id="menu-racismo">Luta contra o Racismo</button>
-      <button id="menu-cultura">Cultura Afro-brasileira</button>
-      <button id="menu-historico">História e Legado</button>
-      <button id="menu-consciencia">Conscientização e Educação</button>
-      <button id="menu-literatura">Literatura Negra</button>
-    </nav>
-  </header>
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- Seção Galeria -->
-  <section id="galeria-section">
-    <h1>Consciência Negra - Galeria de Fotos</h1>
-    <p id="intro-text">
-      A Consciência Negra é uma data importante que celebra a cultura, a história e a resistência do povo negro no Brasil e no mundo. É momento de refletir sobre igualdade, respeito e o valor da diversidade.
-    </p>
-    <img id="main-photo" src="assets/images/Black_Conscience_Day_by_Latuff2.jpg" alt="Imagem principal" />
-    <p id="photo-description">
-      Foto 1: Romper as correntes da escravidão simboliza a liberdade e a justiça.
-    </p>
-    <div class="gallery">
-      <img class="thumb active" src="assets/images/Black_Conscience_Day_by_Latuff2.jpg" alt="Dia da Consciência Negra" onclick="changePhoto(this, 'assets/images/Black_Conscience_Day_by_Latuff2.jpg', 'Foto 1: Dia da Consciência Negra – um marco de luta, memória e valorização da cultura afro-brasileira.')" />
-      <img class="thumb" src="assets/images/capa-racismo.png" alt="Punho cerrado simbolizando resistência" onclick="changePhoto(this, 'assets/images/capa-racismo.png', 'Foto 2: O punho cerrado representa força, resistência e unidade na luta contra o racismo.')" />
-      <img class="thumb" src="assets/images/dia_consciencia_negra.png" alt="Correntes rompidas simbolizando liberdade" onclick="changePhoto(this, 'assets/images/dia_consciencia_negra.png', 'Foto 3: Romper as correntes da escravidão simboliza a liberdade e a justiça.')" />
-      <img class="thumb" src="assets/images/ILUSTRACAO-O-Papel-da-Publicidade-no-combate-ao-Racismo-POR-Erick-Nunes.png" alt="Imagem contra o racismo" onclick="changePhoto(this, 'assets/images/ILUSTRACAO-O-Papel-da-Publicidade-no-combate-ao-Racismo-POR-Erick-Nunes.png', 'Foto 4: O racismo fere e exclui – é preciso combatê-lo para garantir igualdade e respeito.')" />
-    </div>
-    <p style="max-width:700px; margin: 0 auto; color:#f0c674; font-style: italic;">
-      As imagens acima representam luta, resistência, memória e o combate ao racismo. Que elas inspirem a reflexão e o respeito pela diversidade. #ConsciênciaNegra
-    </p>
-  </section>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f0f0f0;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
 
-  <!-- Seção Racismo -->
-  <section id="info-section-2" class="hidden">
-    <h1>Luta contra o Racismo</h1>
-    <p>
-      O combate ao racismo é uma luta que envolve a sociedade como um todo. Trata-se de reconhecer as desigualdades estruturais e trabalhar para garantir os direitos e a dignidade de todas as pessoas, independentemente da cor de sua pele.
-    </p>
-  </section>
+header {
+  width: 100%;
+  background-color: #1f1f1f;
+  padding: 15px 0;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+}
 
-  <!-- Seção Cultura -->
-  <section id="info-section-3" class="hidden">
-    <h1>Cultura Afro-brasileira</h1>
-    <p>
-      A cultura afro-brasileira é rica e diversificada, com influências que vão da música ao folclore, da dança à culinária. Ela faz parte da identidade nacional e deve ser valorizada e preservada.
-    </p>
-  </section>
+nav {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
 
-  <!-- Seção Histórico -->
-  <section id="info-section-4" class="hidden">
-    <h1>História e Legado</h1>
-    <p>
-      A história dos negros no Brasil é marcada por resistência e luta. Desde a chegada dos primeiros africanos escravizados até os movimentos sociais contemporâneos, o legado da resistência negra deve ser reconhecido e celebrado.
-    </p>
-  </section>
+nav button {
+  background-color: #2c2c2c;
+  border: none;
+  color: #f0c674;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
 
-  <!-- Seção Conscientização -->
-  <section id="info-section-5" class="hidden">
-    <h1>Conscientização e Educação</h1>
-    <p>
-      A educação é fundamental para a conscientização da população sobre o racismo estrutural e as suas consequências. É necessário ensinar sobre a história, a cultura e as contribuições dos negros para a sociedade brasileira.
-    </p>
-  </section>
+nav button:hover,
+nav button.active {
+  background-color: #f0c674;
+  color: #121212;
+  font-weight: bold;
+}
 
-  <!-- Seção Literatura -->
-  <section id="info-section-6" class="hidden">
-    <h1>Literatura Negra</h1>
-    <p>
-      A literatura negra brasileira tem uma produção rica, com autores e autoras que abordam temas relacionados à cultura, à identidade e ao combate ao racismo. Suas obras são fundamentais para a construção de uma sociedade mais justa e igualitária.
-    </p>
-  </section>
+section {
+  max-width: 900px;
+  background-color: #1e1e1e;
+  padding: 20px 30px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 10px rgba(240,198,116,0.3);
+}
 
-  <script src="assets/js/script.js"></script>
-</body>
-</html>
+h1 {
+  color: #f0c674;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #f0c674;
+}
+
+p {
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+  text-align: justify;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px rgba(240,198,116,0.4);
+}
+
+/* Galeria */
+.gallery {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.gallery img.thumb {
+  width: 140px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.gallery img.thumb:hover {
+  border-color: #f0c674;
+}
+
+.gallery img.thumb.active {
+  border-color: #f0c674;
+}
+
+/* Foto principal e descrição */
+#main-photo {
+  display: block;
+  margin: 0 auto 10px auto;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(240,198,116,0.7);
+}
+
+#photo-description {
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+  color: #f0c674;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .gallery img.thumb {
+    width: 100px;
+    height: 65px;
+  }
+
+  section {
+    padding: 15px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  nav button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  #main-photo {
+    max-height: 250px;
+  }
+}
