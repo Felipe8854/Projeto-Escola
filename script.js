@@ -1,43 +1,42 @@
-// Botões do menu
-const buttons = {
-  galeria: document.getElementById('galeria'),
-  racismo: document.getElementById('racismo'),
-  cultura: document.getElementById('cultura'),
-  historico: document.getElementById('historico'),
-  consciencia: document.getElementById('consciencia'),
-  literatura: document.getElementById('literatura'),
-};
+// Função para trocar a foto principal e descrição
+function changePhoto(element, src, description) {
+  const mainPhoto = document.getElementById('main-photo');
+  const photoDescription = document.getElementById('photo-description');
 
-// Seções correspondentes
-const sections = {
-  galeria: document.getElementById('galeria-section'),
-  racismo: document.getElementById('racismo-section'),
-  cultura: document.getElementById('cultura-section'),
-  historico: document.getElementById('historico-section'),
-  consciencia: document.getElementById('consciencia-section'),
-  literatura: document.getElementById('literatura-section'),
-};
+  mainPhoto.src = src;
+  photoDescription.textContent = description;
 
-// Função para mostrar seção correta e esconder as outras
-function showSection(sectionId) {
-  Object.keys(sections).forEach(key => {
-    sections[key].style.display = key === sectionId ? 'block' : 'none';
+  // Remove a classe active de todas as miniaturas
+  document.querySelectorAll('.thumb').forEach(thumb => {
+    thumb.classList.remove('active');
   });
-
-  // Atualizar botão ativo
-  Object.keys(buttons).forEach(key => {
-    buttons[key].classList.toggle('active', key === sectionId);
-  });
+  // Adiciona a classe active na miniatura clicada
+  element.classList.add('active');
 }
 
-// Adicionar evento click para cada botão
-Object.keys(buttons).forEach(key => {
-  buttons[key].addEventListener('click', () => showSection(key));
-});
+// Gerencia exibição das seções e troca de botão ativo no menu
+const buttons = document.querySelectorAll('nav button');
+const sections = {
+  'menu-galeria': document.getElementById('galeria-section'),
+  'menu-racismo': document.getElementById('info-section-2'),
+  'menu-cultura': document.getElementById('info-section-3'),
+  'menu-historico': document.getElementById('info-section-4'),
+  'menu-consciencia': document.getElementById('info-section-5'),
+  'menu-literatura': document.getElementById('info-section-6')
+};
 
-// Trocar a imagem principal na galeria ao clicar na miniatura
-document.querySelectorAll('.thumb').forEach(thumb => {
-  thumb.addEventListener('click', () => {
-    document.getElementById('main-photo').src = thumb.src;
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Remove classe active de todos os botões
+    buttons.forEach(btn => btn.classList.remove('active'));
+    // Adiciona active ao botão clicado
+    button.classList.add('active');
+
+    // Esconde todas as seções
+    Object.values(sections).forEach(section => {
+      section.classList.add('hidden');
+    });
+    // Mostra a seção selecionada
+    sections[button.id].classList.remove('hidden');
   });
 });
