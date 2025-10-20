@@ -1,154 +1,189 @@
-/* Reset básico */
-* {
+/* Estilos gerais */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #f0c674;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body e fonte */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f5f5;
-  color: #333;
   line-height: 1.6;
-  min-height: 100vh;
 }
 
-/* Container principal */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+header nav {
+  background-color: #111;
+  padding: 10px;
+  text-align: center;
 }
 
-/* Header e Menu */
-header {
-  background-color: #004080;
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-header h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-nav ul li {
+header nav button {
+  background-color: #222;
+  border: none;
+  color: #f0c674;
+  padding: 10px 15px;
+  margin: 0 5px;
   cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-nav ul li:hover,
-nav ul li.active {
-  background-color: #0066cc;
+header nav button.active,
+header nav button:hover {
+  background-color: #f0c674;
+  color: #000;
 }
 
-/* Sessões */
 section {
-  padding: 40px 0;
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+}
+
+.hidden {
   display: none;
 }
 
-section.active {
-  display: block;
-}
-
-/* Títulos das sessões */
-section h2 {
-  font-size: 2rem;
+h1 {
+  text-align: center;
   margin-bottom: 15px;
-  color: #004080;
-  border-bottom: 3px solid #0066cc;
-  padding-bottom: 5px;
 }
 
-/* Texto das sessões */
-section p {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  max-width: 800px;
+p {
+  margin-bottom: 15px;
 }
 
-/* Imagens dentro das sessões */
-section img {
+/* Galeria */
+
+#main-photo {
+  display: block;
   max-width: 100%;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  margin: 0 auto 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #f0c674;
 }
 
-section img:hover {
-  transform: scale(1.05);
-}
-
-/* Galeria de imagens (se houver) */
 .gallery {
   display: flex;
-  gap: 15px;
+  justify-content: center;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-top: 20px;
 }
 
-.gallery img {
-  width: calc(33.333% - 10px);
+.gallery img.thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s ease;
 }
 
-.gallery img:hover,
-.gallery img.selected {
-  border-color: #0066cc;
+.gallery img.thumb.active,
+.gallery img.thumb:hover {
+  border-color: #f0c674;
 }
 
-/* Rodapé */
-footer {
-  background-color: #004080;
-  color: white;
-  text-align: center;
-  padding: 15px 0;
-  margin-top: 40px;
-  font-size: 0.9rem;
+/* Info Sections */
+
+.info-section img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #f0c674;
+}
+
+.info-section h2 {
+  margin-top: 20px;
+  color: #f0c674;
+}
+
+/* Listas */
+
+ul {
+  list-style: disc inside;
+  margin-left: 0;
+  padding-left: 0;
+  color: #f0c674;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+/* Tabs da literatura negra */
+
+.tab {
+  overflow: hidden;
+  background-color: #111;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tab button {
+  background-color: #222;
+  border: none;
+  color: #f0c674;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px 6px 0 0;
+  transition: background-color 0.3s ease;
+}
+
+.tab button.active,
+.tab button:hover {
+  background-color: #f0c674;
+  color: #000;
+}
+
+.tabcontent {
+  background-color: #222;
+  padding: 15px;
+  border-radius: 0 6px 6px 6px;
+  color: #f0c674;
+  box-shadow: 0 0 10px #f0c674;
+}
+
+.tabcontent img {
+  max-width: 150px;
+  height: auto;
+  float: left;
+  margin-right: 15px;
+  border-radius: 6px;
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-  nav ul {
+
+@media (max-width: 600px) {
+  .gallery {
+    justify-content: center;
+  }
+
+  .gallery img.thumb {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tab {
     flex-direction: column;
-    gap: 10px;
   }
 
-  .gallery img {
-    width: calc(50% - 10px);
-  }
-}
-
-@media (max-width: 480px) {
-  header {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  nav ul {
+  .tab button {
     width: 100%;
+    border-radius: 6px;
   }
 
-  .gallery img {
-    width: 100%;
+  .tabcontent img {
+    float: none;
+    margin: 0 auto 15px;
+    display: block;
   }
 }
