@@ -1,60 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Consciência Negra - Galeria e Informações</title>
+  <title>Consciência Negra</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <nav>
-      <button id="menu-galeria" class="active">Galeria</button>
-      <button id="menu-racismo">Luta contra o Racismo</button>
-      <button id="menu-cultura">Cultura Afro-brasileira</button>
-      <button id="menu-historico">História e Legado</button>
-      <button id="menu-consciencia">Conscientização e Educação</button>
-      <button id="menu-literatura">Literatura Negra</button>
-    </nav>
-  </header>
+
+  <nav>
+    <button id="galeria">Galeria</button>
+    <button id="racismo">O Racismo no Brasil</button>
+    <button id="cultura">Cultura Negra</button>
+    <button id="historico">História e Legado</button>
+    <button id="consciencia">Conscientização e Educação</button>
+    <button id="literatura">Literatura Negra</button>
+  </nav>
 
   <section id="galeria-section">
-    <h1>Consciência Negra - Galeria de Fotos</h1>
-    <p id="intro-text">
-      A Consciência Negra é uma data importante que celebra a cultura, a história e a resistência do povo negro no Brasil e no mundo. É momento de refletir sobre igualdade, respeito e o valor da diversidade.
-    </p>
-    <img id="main-photo" src="imagem/Black_Conscience_Day_by_Latuff2.jpg" alt="Imagem principal" />
-    <p id="photo-description">
-      Foto 1: Romper as correntes da escravidão simboliza a liberdade e a justiç.
-    </p>
+    <h1>Galeria de Imagens</h1>
     <div class="gallery">
-      <img class="thumb active" src="imagem/Black_Conscience_Day_by_Latuff2.jpg" alt="Dia da Consciência Negra" onclick="changePhoto(this, 'imagem/Black_Conscience_Day_by_Latuff2.jpg', 'Foto 1: Dia da Consciência Negra – um marco de luta, memória e valorização da cultura afro-brasileira.')" />
-      <img class="thumb" src="imagem/capa-racismo.png" alt="Punho cerrado simbolizando resistência" onclick="changePhoto(this, 'imagem/capa-racismo.png', 'Foto 2: O punho cerrado representa força, resistência e unidade na luta contra o racismo.')" />
-      <img class="thumb" src="imagem/dia_consciencia_negra.png" alt="Correntes rompidas simbolizando liberdade" onclick="changePhoto(this, 'imagem/dia_consciencia_negra.png', 'Foto 3: Romper as correntes da escravidão simboliza a liberdade e a justiça.')" />
-      <img class="thumb" src="imagem/ILUSTRACAO-O-Papel-da-Publicidade-no-combate-ao-Racismo-POR-Erick-Nunes.png" alt="Imagem contra o racismo" onclick="changePhoto(this, 'imagem/ILUSTRACAO-O-Papel-da-Publicidade-no-combate-ao-Racismo-POR-Erick-Nunes.png', 'Foto 4: O racismo fere e exclui – é preciso combatê-lo para garantir igualdade e respeito.')" />
+      <img id="main-photo" src="imagem/Black_Conscience_Day_by_Latuff2.jpg" alt="Imagem principal" />
+      <div class="thumbs">
+        <img class="thumb" src="imagem/capa-racismo.png" alt="Imagem sobre Racismo" />
+        <img class="thumb" src="imagem/dia_consciencia_negra.png" alt="Dia da Consciência Negra" />
+        <img class="thumb" src="imagem/ILUSTRACAO-O-Papel-da-Publicidade-no-combate-ao-Racismo-POR-Erick-Nunes.png" alt="Publicidade e racismo" />
+      </div>
     </div>
-    <p style="max-width:700px; margin: 0 auto; color:#f0c674; font-style: italic;">
-      As imagens acima representam luta, resistência, memória e o combate ao racismo. Que elas inspirem a reflexão e o respeito pela diversidade. #ConsciênciaNegra
-    </p>
   </section>
 
-  <section id="info-section-2" class="hidden">
-    <h1>Mais Sobre a Luta Contra o Racismo</h1>
+  <section id="racismo-section" class="hidden">
+    <h1>O Racismo no Brasil</h1>
     <div class="info-section">
-      <img src="imagem/clay-banks-gr0wnd7pbjk-unsplash_1.jpg" alt="Imagem de protesto contra o racismo" />
-      <p>A luta contra o racismo é uma jornada contínua por igualdade e justiça social. No Brasil, ela tem raízes históricas profundas, iniciadas com a escravidão e se perpetuando até hoje através do racismo estrutural...</p>
+      <img src="imagem/capa-racismo.png" alt="Imagem sobre o racismo" />
+      <p>O racismo no Brasil é um tema que exige reflexão constante...</p>
     </div>
   </section>
 
-  <section id="info-section-3" class="hidden">
-    <h1>Reflexões sobre a Cultura Afro-brasileira</h1>
+  <section id="cultura-section" class="hidden">
+    <h1>Cultura Negra</h1>
     <div class="info-section">
-      <img src="imagem/Encontro_estadual_de_maracatus.jpg" alt="Imagem de cultura afro-brasileira" />
-      <p>A cultura afro-brasileira é uma fusão das tradições africanas com elementos indígenas e europeus, resultando em uma identidade única e rica...</p>
+      <img src="imagem/dia_consciencia_negra.png" alt="Cultura negra" />
+      <p>A cultura negra é rica e diversificada...</p>
     </div>
   </section>
 
-  <!-- Mais seções aqui -->
+  <section id="historico-section" class="hidden">
+    <h1>História e Legado do Movimento Negro</h1>
+    <div class="info-section">
+      <img src="imagem/historia-negra.jpg" alt="História da luta do povo negro" />
+      <p>A luta dos negros no Brasil é uma história de resistência e superação...</p>
+    </div>
+  </section>
+
+  <section id="consciencia-section" class="hidden">
+    <h1>Conscientização e Educação</h1>
+    <div class="info-section">
+      <img src="imagem/educacao-negra.jpg" alt="Educação e conscientização" />
+      <p>A educação é uma ferramenta fundamental para a conscientização...</p>
+    </div>
+  </section>
+
+  <section id="literatura-section" class="hidden">
+    <h1>Literatura Negra</h1>
+    <div class="info-section">
+      <img src="imagem/literatura-negra.jpg" alt="Livros de autores negros" />
+      <p>A literatura negra brasileira tem se destacado com obras que abordam identidade negra...</p>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>

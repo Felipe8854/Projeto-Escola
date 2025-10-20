@@ -1,49 +1,43 @@
+// Botões do menu
+const buttons = {
+  galeria: document.getElementById('galeria'),
+  racismo: document.getElementById('racismo'),
+  cultura: document.getElementById('cultura'),
+  historico: document.getElementById('historico'),
+  consciencia: document.getElementById('consciencia'),
+  literatura: document.getElementById('literatura'),
+};
+
+// Seções correspondentes
 const sections = {
   galeria: document.getElementById('galeria-section'),
-  racismo: document.getElementById('info-section-2'),
-  cultura: document.getElementById('info-section-3'),
-  historico: document.getElementById('info-section-4'),
-  consciencia: document.getElementById('info-section-5'),
-  literatura: document.getElementById('info-section-6')
+  racismo: document.getElementById('racismo-section'),
+  cultura: document.getElementById('cultura-section'),
+  historico: document.getElementById('historico-section'),
+  consciencia: document.getElementById('consciencia-section'),
+  literatura: document.getElementById('literatura-section'),
 };
 
-const buttons = {
-  galeria: document.getElementById('menu-galeria'),
-  racismo: document.getElementById('menu-racismo'),
-  cultura: document.getElementById('menu-cultura'),
-  historico: document.getElementById('menu-historico'),
-  consciencia: document.getElementById('menu-consciencia'),
-  literatura: document.getElementById('menu-literatura')
-};
+// Função para mostrar seção correta e esconder as outras
+function showSection(sectionId) {
+  Object.keys(sections).forEach(key => {
+    sections[key].style.display = key === sectionId ? 'block' : 'none';
+  });
 
-function changeSection(sectionId) {
-  // Oculta todas as seções
-  for (const section in sections) {
-    sections[section].classList.add('hidden');
-  }
-  // Exibe a seção selecionada
-  sections[sectionId].classList.remove('hidden');
+  // Atualizar botão ativo
+  Object.keys(buttons).forEach(key => {
+    buttons[key].classList.toggle('active', key === sectionId);
+  });
 }
 
-function changePhoto(imgElement, photoUrl, description) {
-  // Atualiza a foto principal
-  const mainPhoto = document.getElementById('main-photo');
-  const photoDescription = document.getElementById('photo-description');
-  
-  mainPhoto.src = photoUrl;
-  photoDescription.textContent = description;
+// Adicionar evento click para cada botão
+Object.keys(buttons).forEach(key => {
+  buttons[key].addEventListener('click', () => showSection(key));
+});
 
-  // Ativa a foto clicada
-  const thumbs = document.querySelectorAll('.thumb');
-  thumbs.forEach(thumb => thumb.classList.remove('active'));
-  imgElement.classList.add('active');
-}
-
-// Lógica para os botões de navegação
-buttons.galeria.addEventListener('click', () => changeSection('galeria'));
-buttons.racismo.addEventListener('click', () => changeSection('racismo'));
-buttons.cultura.addEventListener('click', () => changeSection('cultura'));
-buttons.historico.addEventListener('click', () => changeSection('historico'));
-buttons.consciencia.addEventListener('click', () => changeSection('consciencia'));
-buttons.literatura.addEventListener('click', () => changeSection('literatura'));
-
+// Trocar a imagem principal na galeria ao clicar na miniatura
+document.querySelectorAll('.thumb').forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    document.getElementById('main-photo').src = thumb.src;
+  });
+});
