@@ -1,143 +1,217 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #1a1a1a;
-    color: #f1f1f1;
-    text-align: center;
-    padding: 20px;
-    margin: 0;
-}
-header {
-    background-color: #f39c12;
-    padding: 15px 0;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-nav button {
-    background-color: #f39c12;
-    border: none;
-    color: #1a1a1a;
-    padding: 10px 18px;
-    font-size: 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    min-width: 140px;
-}
-nav button:hover {
-    background-color: #e67e22;
-}
-nav button.active {
-    background-color: #d87f0a;
-    box-shadow: 0 0 8px #d87f0a;
-}
-section {
-    max-width: 900px;
-    margin: 0 auto 40px auto;
-    text-align: center;
-}
-section.hidden {
-    display: none;
-}
-h1 {
-    color: #f39c12;
-    margin-bottom: 10px;
-}
-#intro-text {
-    max-width: 700px;
-    margin: 0 auto 30px auto;
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: #ddd;
-}
-#main-photo {
-    width: 80%;
-    max-width: 700px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px #f39c12;
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-}
-#photo-description {
-    max-width: 700px;
-    margin: 10px auto 30px auto;
-    font-size: 1rem;
-    font-style: italic;
-    color: #f0c674;
-    min-height: 60px;
-}
-.gallery {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 15px;
-    margin-bottom: 25px;
-}
-.thumb {
-    width: 100px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 6px;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: border-color 0.2s ease, transform 0.2s ease;
-}
-.thumb:hover {
-    border-color: #f39c12;
-    transform: scale(1.05);
-}
-.thumb.active {
-    border-color: #f39c12;
-    box-shadow: 0 0 10px #f39c12;
-}
-.info-section {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: left;
-    color: #ddd;
-}
-.info-section h2 {
-    color: #f39c12;
-    margin-top: 30px;
-}
-.info-section h3 {
-    color: #f0c674;
-    margin-top: 0;
-}
-.info-section p, .info-section ul {
-    margin: 10px 0 20px;
-    line-height: 1.5;
-}
-.info-section ul {
-    padding-left: 20px;
-}
-.info-section img {
-    width: 100%;
-    max-width: 700px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 12px #f39c12;
-}
-@media (max-width: 600px) {
-    #main-photo {
-        width: 100%;
-    }
-    .thumb {
-        width: 80px;
-        height: 55px;
-    }
-    nav {
-        gap: 10px;
-    }
-    nav button {
-        min-width: 110px;
-        font-size: 0.9rem;
-        padding: 8px 12px;
-    }
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consciência Negra - Luta, Cultura e Resistência</title>
+    <meta name="description" content="Site completo sobre consciência negra abordando lutas, combate ao racismo e cultura afro-brasileira">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#000000",
+                        secondary: "#8B4513", // Marrom
+                        accent: "#FFD700", // Dourado
+                        background: "#F5F5DC", // Bege claro
+                        dark: "#1a1a1a"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-background text-gray-800">
+    <header class="bg-primary text-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+                        <i class="fas fa-fist-raised text-primary text-lg"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold">Consciência Negra</h1>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="showSection('inicio')" class="nav-btn active bg-accent text-primary px-4 py-2 rounded-lg font-medium transition-all duration-300">
+                        <i class="fas fa-home mr-2"></i>Início
+                    </button>
+                    <button onclick="showSection('lutas')" class="nav-btn bg-secondary text-white px-4 py-2 rounded-lg font-medium hover:bg-brown-700 transition-all duration-300">
+                        <i class="fas fa-fist-raised mr-2"></i>Lutas
+                    </button>
+                    <button onclick="showSection('racismo')" class="nav-btn bg-secondary text-white px-4 py-2 rounded-lg font-medium hover:bg-brown-700 transition-all duration-300">
+                        <i class="fas fa-ban mr-2"></i>Racismo
+                    </button>
+                    <button onclick="showSection('cultura')" class="nav-btn bg-secondary text-white px-4 py-2 rounded-lg font-medium hover:bg-brown-700 transition-all duration-300">
+                        <i class="fas fa-music mr-2"></i>Cultura
+                    </button>
+                    <button onclick="showSection('personalidades')" class="nav-btn bg-secondary text-white px-4 py-2 rounded-lg font-medium hover:bg-brown-700 transition-all duration-300">
+                        <i class="fas fa-users mr-2"></i>Personalidades
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="inicio" class="page-section active">
+        <div class="bg-secondary text-white py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">Consciência Negra</h2>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    Resistência, Ancestralidade e Luta por Igualdade
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="showSection('lutas')" class="bg-accent text-primary px-6 py-3 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors duration-300">
+                        Conheça as Lutas
+                    </button>
+                    <button onclick="showSection('cultura')" class="bg-white text-secondary px-6 py-3 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors duration-300">
+                        Explore a Cultura
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+                    <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-fist-raised text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary">Lutas Históricas</h3>
+                    <p class="text-gray-700">
+                        A trajetória de resistência do povo negro desde os quilombos até os movimentos contemporâneos.
+                    </p>
+                </div>
+                
+                <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+                    <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-ban text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary">Combate ao Racismo</h3>
+                    <p class="text-gray-700">
+                        Informações e ferramentas para identificar e combater o racismo estrutural e institucional.
+                    </p>
+                </div>
+                
+                <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+                    <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-music text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary">Cultura Afro</h3>
+                    <p class="text-gray-700">
+                        A riqueza da cultura afro-brasileira em música, dança, culinária e tradições.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lutas" class="page-section hidden">
+        <div class="container mx-auto px-4 py-16">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">Lutas e Resistência</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold mb-4 text-secondary">Quilombos - Resistência Ancestral</h3>
+                        <img 
+                            src="https://picsum.photos/600/300?random=10" 
+                            alt="Representação de quilombo" 
+                            class="w-full rounded-lg mb-4"
+                            loading="lazy"
+                        />
+                        <p class="text-lg leading-relaxed">Os quilombos foram comunidades autônomas formadas por pessoas escravizadas que fugiam do cativeiro.</p>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="racismo" class="page-section hidden">
+        <div class="container mx-auto px-4 py-16">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">Combate ao Racismo</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold mb-4 text-secondary">O que é Racismo?</h3>
+                        <p class="text-lg leading-relaxed">
+                            O racismo é um sistema de opressão baseado na ideia de superioridade racial.
+                        </p>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="cultura" class="page-section hidden">
+        <div class="container mx-auto px-4 py-16">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">Cultura Afro-Brasileira</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Capoeira</h3>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="personalidades" class="page-section hidden">
+        <div class="container mx-auto px-4 py-16">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">Personalidades Importantes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                    <h3 class="text-lg font-bold mb-2 text-secondary">Zumbi dos Palmares</h3>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <footer class="bg-primary text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm text-gray-500">&copy; 2025 Consciência Negra. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Função para mostrar a seção desejada e gerenciar a classe 'hidden'
+        function showSection(sectionId) {
+            // 1. Esconde todas as seções
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('active'); 
+            });
+
+            // 2. Mostra a seção desejada (o elemento com o ID correspondente)
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
+                activeSection.classList.add('active'); 
+            }
+
+            // 3. Atualiza os botões de navegação no header para mudar a cor/estilo
+            document.querySelectorAll('.nav-btn').forEach(button => {
+                // Estilo Inativo (Marrom e Branco)
+                button.classList.remove('active', 'bg-accent', 'text-primary');
+                button.classList.add('bg-secondary', 'text-white', 'hover:bg-brown-700');
+            });
+            
+            const activeButton = document.querySelector(`.nav-btn[onclick="showSection('${sectionId}')"]`);
+            if (activeButton) {
+                // Estilo Ativo (Dourado e Preto)
+                activeButton.classList.add('active', 'bg-accent', 'text-primary');
+                // Remove as classes do estado inativo
+                activeButton.classList.remove('bg-secondary', 'text-white', 'hover:bg-brown-700'); 
+            }
+        }
+
+        // Inicializa a página mostrando a seção 'inicio' ao carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('inicio');
+        });
+    </script>
+</body>
+</html>
