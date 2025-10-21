@@ -3,341 +3,338 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Consciência Negra</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Consciência Negra – Galeria e Informações</title>
   <style>
-    /* Galeria */
-    .gallery {
+    body {
+      font-family: Arial, sans-serif;
+      background: #1a1a1a;
+      color: #f1f1f1;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+    header {
+      background-color: #f39c12;
+      padding: 15px 0;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    nav {
       display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
       justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
-
-    .gallery-item {
+    nav button {
+      background-color: #f39c12;
+      border: none;
+      color: #1a1a1a;
+      padding: 10px 18px;
+      font-size: 1rem;
+      border-radius: 6px;
       cursor: pointer;
-      max-width: 200px;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
+      transition: background-color 0.3s ease;
+      min-width: 140px;
     }
-    .gallery-item:hover {
-      transform: scale(1.05);
+    nav button:hover {
+      background-color: #e67e22;
     }
-
-    /* Conscientização e Leitura - miniaturas */
-    .photo-app {
-      max-width: 600px;
-      margin: 20px auto;
+    nav button.active {
+      background-color: #d87f0a;
+      box-shadow: 0 0 8px #d87f0a;
+    }
+    section {
+      max-width: 900px;
+      margin: 0 auto 40px auto;
       text-align: center;
     }
-
-    #photo-main {
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    section.hidden {
+      display: none;
     }
-
-    .photo-thumbnails {
-      margin-top: 15px;
+    h1 {
+      color: #f39c12;
+      margin-bottom: 10px;
+    }
+    #intro-text {
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #ddd;
+    }
+    #main-photo {
+      width: 80%;
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #f39c12;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    #photo-description {
+      max-width: 700px;
+      margin: 10px auto 30px auto;
+      font-size: 1rem;
+      font-style: italic;
+      color: #f0c674;
+      min-height: 60px;
+    }
+    .gallery {
       display: flex;
       justify-content: center;
       gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+      margin-bottom: 25px;
     }
-
-    .photo-thumbnails img {
-      max-width: 80px;
-      cursor: pointer;
+    .thumb {
+      width: 100px;
+      height: 70px;
+      object-fit: cover;
       border-radius: 6px;
-      border: 2px solid transparent;
-      transition: border-color 0.3s ease;
-    }
-
-    .photo-thumbnails img:hover {
-      border-color: #555;
-    }
-
-    /* Aplicação de fotos nas subseções da página Arte Afro */
-    .subsection-photo-app {
-      max-width: 600px;
-      margin: 15px auto 30px;
-      text-align: center;
-    }
-    .subsection-photo-app img {
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.25);
       cursor: pointer;
-      transition: transform 0.3s ease;
+      border: 2px solid transparent;
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
-    .subsection-photo-app img:hover {
+    .thumb:hover {
+      border-color: #f39c12;
       transform: scale(1.05);
     }
-
-    /* Esconder seções */
-    .hidden {
-      display: none;
+    .thumb.active {
+      border-color: #f39c12;
+      box-shadow: 0 0 10px #f39c12;
     }
-
-    /* Menu */
-    nav ul.menu {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 0;
-      background-color: #222;
-      margin: 0;
+    .info-section {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+      color: #ddd;
     }
-
-    nav ul.menu li {
-      margin: 0 15px;
+    .info-section h2 {
+      color: #f39c12;
+      margin-top: 30px;
     }
-
-    nav ul.menu li a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      padding: 15px 10px;
-      display: block;
-      transition: background-color 0.3s ease;
-    }
-
-    nav ul.menu li a:hover {
-      background-color: #555;
-      border-radius: 5px;
-    }
-
-    /* Geral do body */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #222;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-
-    header, footer {
-      background-color: #222;
-      color: white;
-      text-align: center;
-      padding: 15px 10px;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 0 15px 50px 15px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-
-    h1 {
-      color: #111;
+    .info-section h3 {
+      color: #f0c674;
       margin-top: 0;
     }
-
-    h2 {
-      color: #333;
-      margin-top: 1.5em;
+    .info-section p, .info-section ul {
+      margin: 10px 0 20px;
+      line-height: 1.5;
     }
-
-    p {
-      margin-bottom: 1.2em;
-      font-size: 1.1em;
+    .info-section ul {
+      padding-left: 20px;
+    }
+    .info-section img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 12px #f39c12;
+    }
+    @media (max-width: 600px) {
+      #main-photo {
+        width: 100%;
+      }
+      .thumb {
+        width: 80px;
+        height: 55px;
+      }
+      nav {
+        gap: 10px;
+      }
+      nav button {
+        min-width: 110px;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <ul class="menu">
-        <li><a href="#" data-section="info-section-1">História da Consciência Negra</a></li>
-        <li><a href="#" data-section="info-section-2">Personalidades Negras</a></li>
-        <li><a href="#" data-section="info-section-3">Eventos Importantes</a></li>
-        <li><a href="#" data-section="info-section-4">Cultura Afro-brasileira</a></li>
-        <li><a href="#" data-section="info-section-5">Galeria</a></li>
-        <li><a href="#" data-section="info-section-6">Conscientização e Leitura</a></li>
-        <li><a href="#" data-section="info-section-7">Arte Afro</a></li>
-      </ul>
+      <button id="menu-galeria" class="active">Galeria</button>
+      <button id="menu-racismo">Luta contra o Racismo</button>
+      <button id="menu-cultura">Cultura Afro-brasileira</button>
+      <button id="menu-historico">História e Legado</button>
+      <button id="menu-consciencia">Conscientização e Educação</button>
+      <button id="menu-literatura">Literatura Negra</button>
+      <button id="menu-arteafro">Arte Afro</button>
     </nav>
   </header>
 
-  <main>
-    <!-- Seção 1 - História -->
-    <section id="info-section-1">
-      <h1>História da Consciência Negra</h1>
-      <p>A Consciência Negra é uma data celebrada para refletir e valorizar a história, cultura e lutas do povo negro, especialmente no Brasil. Esse movimento tem origem na resistência dos negros durante o período colonial e escravista, e continua até hoje como um importante momento para fortalecer a identidade negra e combater o racismo estrutural.</p>
-      <p>Um marco histórico importante é a figura de Zumbi dos Palmares, líder do Quilombo dos Palmares, que resistiu à escravidão e à opressão colonial. O dia 20 de novembro, data da morte de Zumbi, é símbolo da resistência e da luta pela liberdade e igualdade.</p>
-      <p>A importância da Consciência Negra está em reconhecer as contribuições e a presença do povo negro na formação cultural, social e econômica do Brasil, combatendo estereótipos e promovendo inclusão e valorização.</p>
-    </section>
+  <!-- Seção Galeria -->
+  <section id="galeria-section">
+    <h1>Consciência Negra - Galeria de Fotos</h1>
+    <p id="intro-text">
+      A Consciência Negra é uma data importante que celebra a cultura, a história e a resistência do povo negro no Brasil e no mundo. É momento de refletir sobre igualdade, respeito e o valor da diversidade.
+    </p>
+    <img id="main-photo" src="imagem/Black_Conscience_Day_by_Latuff2.jpg" alt="Imagem principal" />
+    <p id="photo-description">
+      Foto 1: Romper as correntes da escravidão simboliza a liberdade e a justiça.
+    </p>
+    <div class="gallery">
+      <img class="thumb active" src="imagem/Black_Conscience_Day_by_Latuff2.jpg" alt="Dia da Consciência Negra" onclick="changePhoto(this, 'imagem/Black_Conscience_Day_by_Latuff2.jpg', 'Foto 1: Dia da Consciência Negra – um marco de luta, memória e valorização da cultura afro-brasileira.')" />
+      <img class="thumb" src="imagem/capa-racismo.png" alt="Punho cerrado simbolizando resistência" onclick="changePhoto(this, 'imagem/capa-racismo.png', 'Foto 2: O punho cerrado representa força, resistência e unidade na luta contra o racismo.')" />
+      <img class="thumb" src="imagem/dia_consciencia_negra.png" alt="Correntes rompidas simbolizando liberdade" onclick="changePhoto(this, 'imagem/dia_consciencia_negra.png', 'Foto 3: Romper as correntes da escravidão simboliza a liberdade e a justiça.')" />
+      <img class="thumb" src="imagem/ILUSTRACAO-O-Papel-da-Publicidade-no-combate-ao-Racismo-POR-Erick-Nunes.png" alt="Imagem contra o racismo" onclick="changePhoto(this, 'imagem/ILUSTRACAO-O-Papel-da-Publicidade-no-combate-ao-Racismo-POR-Erick-Nunes.png', 'Foto 4: O racismo fere e exclui – é preciso combatê-lo para garantir igualdade e respeito.')" />
+    </div>
+    <p style="max-width:700px; margin: 0 auto; color:#f0c674; font-style: italic;">
+      As imagens acima representam luta, resistência, memória e o combate ao racismo. Que elas inspirem a reflexão e o respeito pela diversidade. #ConsciênciaNegra
+    </p>
+  </section>
 
-    <!-- Seção 2 - Personalidades Negras -->
-    <section id="info-section-2" class="hidden">
-      <h1>Personalidades Negras</h1>
-      <p>O Brasil e o mundo possuem uma história repleta de figuras negras que marcaram diferentes áreas, desde a política até as artes e ciências. Algumas dessas personalidades são símbolos de resistência e inspiração para as gerações atuais.</p>
-      <p><strong>Zumbi dos Palmares:</strong> Líder do Quilombo dos Palmares, símbolo da resistência contra a escravidão e a opressão colonial.</p>
-      <p><strong>Dandara:</strong> Guerreira e companheira de Zumbi, lutou bravamente na defesa da liberdade dos quilombolas.</p>
-      <p><strong>Machado de Assis:</strong> Considerado um dos maiores escritores brasileiros, que apesar do racismo da época, produziu obras-primas da literatura.</p>
-      <p><strong>Abdias do Nascimento:</strong> Ativista, político e artista, fundador do Teatro Experimental do Negro e grande lutador pelos direitos civis dos negros no Brasil.</p>
-      <p><strong>Carolina Maria de Jesus:</strong> Escritora e poetisa, que com sua obra "Quarto de Despejo" trouxe à tona as condições de vida nas favelas.</p>
-      <p>Esses são apenas alguns exemplos de uma vasta gama de lideranças negras que influenciaram profundamente a cultura e a história brasileira e mundial.</p>
-    </section>
-
-    <!-- Seção 3 - Eventos Importantes -->
-    <section id="info-section-3" class="hidden">
-      <h1>Eventos Importantes</h1>
-      <p>Ao longo da história, diversos eventos marcaram a luta pela igualdade racial e pela valorização da cultura negra no Brasil e no mundo.</p>
-      <p><strong>Abolição da Escravidão (1888):</strong> A assinatura da Lei Áurea foi um marco formal do fim da escravidão no Brasil, mas não encerrou as desigualdades e discriminações raciais.</p>
-      <p><strong>Dia da Consciência Negra (20 de novembro):</strong> Instituído para celebrar a história, a cultura e as lutas do povo negro, é uma data que reforça a importância da resistência e do combate ao racismo.</p>
-      <p><strong>Marcha da Consciência Negra:</strong> Manifestações e mobilizações organizadas para chamar a atenção sobre as questões raciais e promover direitos iguais.</p>
-      <p><strong>Movimentos sociais e organizações negras:</strong> Ao longo dos anos, surgiram várias entidades que buscam a promoção dos direitos, cultura e políticas afirmativas, como o Movimento Negro Unificado.</p>
-      <p>Esses eventos mostram a força da luta antirracista e a importância da união para construir uma sociedade mais justa.</p>
-    </section>
-
-    <!-- Seção 4 - Cultura Afro-brasileira -->
-    <section id="info-section-4" class="hidden">
-      <h1>Cultura Afro-brasileira</h1>
-      <p>A cultura afro-brasileira é um dos pilares da identidade nacional, influenciando diversas áreas da sociedade, como religião, música, dança, culinária e tradições populares.</p>
-      <p><strong>Religiões de matriz africana:</strong> O candomblé e a umbanda são expressões religiosas que preservam crenças e rituais africanos, mantendo vivas as tradições ancestrais.</p>
-      <p><strong>Música e dança:</strong> O samba, o maracatu, o afoxé e outros ritmos têm raízes africanas e são símbolos de resistência e celebração da negritude.</p>
-      <p><strong>Culinária:</strong> Pratos como o acarajé, o vatapá e o caruru são parte importante da gastronomia afro-brasileira, carregando história e sabor.</p>
-      <p>Essas manifestações culturais são fundamentais para a afirmação da identidade negra e para a diversidade cultural do Brasil.</p>
-    </section>
-
-    <!-- Seção 5 - Galeria -->
-    <section id="info-section-5" class="hidden">
-      <h1>Galeria</h1>
-      <div class="gallery">
-        <img src="imagem/galeria1.jpg" alt="Imagem 1" class="gallery-item" />
-        <img src="imagem/galeria2.jpg" alt="Imagem 2" class="gallery-item" />
-        <img src="imagem/galeria3.jpg" alt="Imagem 3" class="gallery-item" />
-        <img src="imagem/galeria4.jpg" alt="Imagem 4" class="gallery-item" />
-        <img src="imagem/galeria5.jpg" alt="Imagem 5" class="gallery-item" />
-        <img src="imagem/galeria6.jpg" alt="Imagem 6" class="gallery-item" />
-      </div>
-      <p>Clique nas imagens para ampliar.</p>
-    </section>
-
-    <!-- Seção 6 - Conscientização e Leitura -->
-    <section id="info-section-6" class="hidden">
-      <h1>Conscientização e Leitura</h1>
-      <p>A leitura é um dos caminhos mais eficazes para ampliar a consciência sobre a história, cultura e os desafios enfrentados pelo povo negro. Obras de autores negros são instrumentos poderosos de reflexão e conhecimento.</p>
-      <p>Selecionamos alguns livros fundamentais para essa jornada:</p>
+  <!-- Seção Racismo -->
+  <section id="info-section-2" class="hidden">
+    <h1>Mais Sobre a Luta Contra o Racismo</h1>
+    <div class="info-section">
+      <img src="imagem/clay-banks-gr0wnd7pbjk-unsplash_1.jpg" alt="Imagem de protesto contra o racismo" />
+      <p>A luta contra o racismo é uma jornada contínua por igualdade e justiça social. No Brasil, ela tem raízes históricas profundas, iniciadas com a escravidão e se perpetuando até hoje através do racismo estrutural. Desde a abolição da escravidão, a ausência de políticas de inclusão social e econômica para a população negra forçou uma luta constante por dignidade e espaço. Movimentos negros no século XX e XXI têm sido cruciais para pressionar por mudanças. Iniciativas como cotas raciais em universidades e o Estatuto da Igualdade Racial, bem como a Lei 10.639/03, buscam promover a inclusão e o reconhecimento da história afro-brasileira. Movimentos globais, como o Black Lives Matter, também denunciam o racismo sistêmico. A luta envolve não apenas políticas públicas, mas também a conscientização individual e coletiva para desconstruir preconceitos.</p>
+      <h3>Dicas para combater o racismo:</h3>
       <ul>
-        <li><strong>"Quarto de Despejo" - Carolina Maria de Jesus:</strong> Um relato autobiográfico que retrata a vida na favela, mostrando a realidade de exclusão e racismo.</li>
-        <li><strong>"O Quilombismo" - Abdias do Nascimento:</strong> Análise da resistência negra e a importância dos quilombos como símbolo de liberdade.</li>
-        <li><strong>"Ponciá Vicêncio" - Conceição Evaristo:</strong> Romance que aborda temas como racismo, classe social e identidade negra.</li>
-        <li><strong>"Encarcerados" - Cuti:</strong> Reflexões sobre o sistema prisional e suas implicações raciais.</li>
+        <li>Eduque-se sobre história e cultura afro-brasileira.</li>
+        <li>Reconheça e confronte seus próprios preconceitos.</li>
+        <li>Apoie causas e organizações que promovem igualdade racial.</li>
+        <li>Divulgue informações que combatam estereótipos e preconceitos.</li>
+        <li>Incentive a diversidade no ambiente de trabalho e estudo.</li>
       </ul>
+    </div>
+  </section>
 
-      <div class="photo-app">
-        <img id="photo-main" src="imagem/livro1.jpg" alt="Capa do livro Quarto de Despejo" />
-        <div class="photo-thumbnails">
-          <img src="imagem/livro1.jpg" alt="Capa Quarto de Despejo" onclick="changePhoto('imagem/livro1.jpg')" />
-          <img src="imagem/livro2.jpg" alt="Capa O Quilombismo" onclick="changePhoto('imagem/livro2.jpg')" />
-          <img src="imagem/livro3.jpg" alt="Capa Ponciá Vicêncio" onclick="changePhoto('imagem/livro3.jpg')" />
-          <img src="imagem/livro4.jpg" alt="Capa Encarcerados" onclick="changePhoto('imagem/livro4.jpg')" />
-        </div>
-      </div>
-    </section>
+  <!-- Seção Cultura Afro-brasileira -->
+  <section id="info-section-3" class="hidden">
+    <h1>Cultura Afro-brasileira</h1>
+    <div class="info-section">
+      <p>A cultura afro-brasileira é rica e diversa, influenciando música, dança, culinária, religião e muito mais. Do samba ao maracatu, do candomblé à capoeira, a herança africana é fundamental para a identidade do Brasil.</p>
+      <img src="imagem/cultura_afro.jpg" alt="Cultura Afro-brasileira" />
+      <h3>Aspectos importantes da cultura afro-brasileira:</h3>
+      <ul>
+        <li>Música e dança: samba, maracatu, ijexá.</li>
+        <li>Religiões afro-brasileiras: candomblé, umbanda.</li>
+        <li>Culinária típica: acarajé, vatapá, feijoada.</li>
+        <li>Festas tradicionais: Festa de Iemanjá, Congado.</li>
+        <li>Expressões artísticas e literatura.</li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Seção 7 - Arte Afro -->
-    <section id="info-section-7" class="hidden">
-      <h1>Arte Afro</h1>
-      
-      <h2>Grafite, Murais e Cultura Urbana</h2>
-      <p>O grafite e os murais são expressões artísticas urbanas que trazem à tona histórias, lutas e identidades negras, ocupando espaços públicos e valorizando a cultura afro nas cidades.</p>
-      <p>Essas manifestações artísticas dialogam com o cotidiano e com as questões sociais, fortalecendo a representatividade e combatendo o racismo por meio da arte.</p>
-      
-      <div class="subsection-photo-app">
-        <img id="grafite-photo" src="imagem/grafite1.jpg" alt="Grafite Afro" />
-      </div>
+  <!-- Seção História e Legado -->
+  <section id="info-section-4" class="hidden">
+    <h1>História e Legado</h1>
+    <div class="info-section">
+      <p>O legado da população negra no Brasil é vasto e impactante. Desde a resistência durante o período escravista até a contribuição na formação cultural e social do país.</p>
+      <img src="imagem/historia_legado.jpg" alt="História e legado afro-brasileiro" />
+      <h3>Marcos históricos:</h3>
+      <ul>
+        <li>Período escravista (séculos XVI a XIX).</li>
+        <li>Movimentos de resistência, como Quilombos.</li>
+        <li>Abolição da escravidão em 1888.</li>
+        <li>Conquistas dos direitos civis e culturais.</li>
+      </ul>
+    </div>
+  </section>
 
-      <h2>Moda, Estética e Resistência</h2>
-      <p>A moda e a estética negra representam formas de resistência e afirmação da identidade, incorporando elementos tradicionais e contemporâneos que celebram a cultura afro.</p>
-      <p>O uso dos cabelos naturais, roupas com referências africanas e acessórios simbólicos são exemplos de como a moda dialoga com a história e a luta por respeito e valorização.</p>
+  <!-- Seção Conscientização e Educação -->
+  <section id="info-section-5" class="hidden">
+    <h1>Conscientização e Educação</h1>
+    <div class="info-section">
+      <p>A educação é uma das ferramentas mais poderosas para a conscientização sobre a história negra e o combate ao racismo.</p>
+      <img src="imagem/educacao_consciencia.jpg" alt="Educação e conscientização" />
+      <h3>Iniciativas importantes:</h3>
+      <ul>
+        <li>Incluir a história afro-brasileira no currículo escolar.</li>
+        <li>Promover debates e seminários sobre racismo e diversidade.</li>
+        <li>Valorizar autores e artistas negros.</li>
+        <li>Incentivar a representatividade em todos os espaços.</li>
+      </ul>
+    </div>
+  </section>
 
-      <div class="subsection-photo-app">
-        <img id="moda-photo" src="imagem/moda1.jpg" alt="Moda Afro" />
-      </div>
+  <!-- Seção Literatura Negra -->
+  <section id="info-section-6" class="hidden">
+    <h1>Literatura Negra</h1>
+    <div class="info-section">
+      <p>A literatura negra é uma expressão importante da cultura e da resistência, revelando histórias, vivências e perspectivas do povo negro.</p>
+      <img src="imagem/literatura_negra.jpg" alt="Literatura negra" />
+      <h3>Autores e obras relevantes:</h3>
+      <ul>
+        <li>Conceição Evaristo – "Ponciá Vicêncio".</li>
+        <li>Chimamanda Ngozi Adichie – "Americanah".</li>
+        <li>Carolina Maria de Jesus – "Quarto de Despejo".</li>
+        <li>Paulo Lins – "Cidade de Deus".</li>
+      </ul>
+    </div>
+  </section>
 
-      <h2>Música e Dança</h2>
-      <p>Ritmos e danças afro-brasileiras, como o samba, maracatu e afoxé, são pilares culturais que expressam alegria, resistência e fé, transmitidos de geração para geração.</p>
-
-      <h2>Artes Plásticas e Literatura</h2>
-      <p>Artistas plásticos e escritores negros contribuem com suas obras para o enriquecimento cultural e para o debate sobre identidade, racismo e memória histórica.</p>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 Consciência Negra - Todos os direitos reservados</p>
-  </footer>
+  <!-- Seção Arte Afro -->
+  <section id="info-section-7" class="hidden">
+    <h1>Arte Afro</h1>
+    <div class="info-section">
+      <p>A arte afro-brasileira expressa a identidade, a história e as lutas do povo negro por meio de diversas formas, como pintura, escultura, música e dança.</p>
+      <img src="imagem/arte_afro.jpg" alt="Arte afro" />
+      <h3>Formas de arte afro:</h3>
+      <ul>
+        <li>Pintura e escultura.</li>
+        <li>Artesanato tradicional.</li>
+        <li>Música e dança: samba, capoeira.</li>
+        <li>Teatro e literatura.</li>
+      </ul>
+    </div>
+  </section>
 
   <script>
-    // Troca de seções via menu
-    const menuLinks = document.querySelectorAll('nav ul.menu li a');
-    const sections = document.querySelectorAll('main section');
+    // Função para trocar a foto principal e legenda na galeria
+    function changePhoto(thumb, src, description) {
+      const mainPhoto = document.getElementById('main-photo');
+      const photoDescription = document.getElementById('photo-description');
+      const thumbs = document.querySelectorAll('.thumb');
+      
+      mainPhoto.src = src;
+      photoDescription.textContent = description;
 
-    menuLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = e.target.getAttribute('data-section');
-
-        sections.forEach(section => {
-          if(section.id === target) {
-            section.classList.remove('hidden');
-          } else {
-            section.classList.add('hidden');
-          }
-        });
-      });
-    });
-
-    // Galeria: ampliar imagens ao clicar
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    galleryItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const src = item.src;
-        // Criar modal simples para exibir imagem ampliada
-        const modal = document.createElement('div');
-        modal.style.position = 'fixed';
-        modal.style.top = '0';
-        modal.style.left = '0';
-        modal.style.width = '100vw';
-        modal.style.height = '100vh';
-        modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
-        modal.style.display = 'flex';
-        modal.style.justifyContent = 'center';
-        modal.style.alignItems = 'center';
-        modal.style.cursor = 'pointer';
-        modal.style.zIndex = '1000';
-
-        const img = document.createElement('img');
-        img.src = src;
-        img.style.maxWidth = '90%';
-        img.style.maxHeight = '90%';
-        img.style.borderRadius = '10px';
-        img.style.boxShadow = '0 0 20px white';
-
-        modal.appendChild(img);
-        document.body.appendChild(modal);
-
-        modal.addEventListener('click', () => {
-          document.body.removeChild(modal);
-        });
-      });
-    });
-
-    // Conscientização e Leitura - mudar foto principal ao clicar em miniaturas
-    function changePhoto(src) {
-      document.getElementById('photo-main').src = src;
+      thumbs.forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
     }
 
-    // Aplicação simples de fotos nas subseções da página Arte Afro
-    // (pode ser expandida para troca, mas por enquanto só efeito hover já aplicado via CSS)
+    // Função para trocar a seção visível e o botão ativo do menu
+    function switchSection(sectionKey) {
+      // Mapear as seções com suas IDs
+      const sections = {
+        galeria: document.getElementById('galeria-section'),
+        racismo: document.getElementById('info-section-2'),
+        cultura: document.getElementById('info-section-3'),
+        historico: document.getElementById('info-section-4'),
+        consciencia: document.getElementById('info-section-5'),
+        literatura: document.getElementById('info-section-6'),
+        arteafro: document.getElementById('info-section-7'),
+      };
+
+      // Esconder todas as seções
+      Object.values(sections).forEach(sec => sec.classList.add('hidden'));
+
+      // Mostrar a seção selecionada
+      if (sections[sectionKey]) {
+        sections[sectionKey].classList.remove('hidden');
+      }
+
+      // Atualizar o botão ativo
+      const buttons = document.querySelectorAll('nav button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`menu-${sectionKey}`);
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    // Adicionar event listeners aos botões do menu
+    document.querySelectorAll('nav button').forEach(button => {
+      button.addEventListener('click', () => {
+        const sectionKey = button.id.replace('menu-', '');
+        switchSection(sectionKey);
+      });
+    });
+
+    // Inicializar a visualização com a galeria mostrada
+    switchSection('galeria');
   </script>
 </body>
 </html>
-
