@@ -54,19 +54,14 @@ p {
 }
 
 /* Galeria */
-
 #main-photo {
   display: block;
   max-width: 100%;
   height: auto;
   margin: 0 auto 10px;
   border-radius: 6px;
-  box-shadow: 0 0 20px #f0c674;
-  
+  box-shadow: 0 0 10px #f0c674;
   transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
-  opacity: 1;
-  transform: translateX(0) scale(1);
-  filter: brightness(1);
 }
 
 .gallery {
@@ -83,17 +78,15 @@ p {
   border-radius: 6px;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 .gallery img.thumb.active,
 .gallery img.thumb:hover {
   border-color: #f0c674;
-  transform: scale(1.1);
 }
 
 /* Info Sections */
-
 .info-section img {
   max-width: 100%;
   height: auto;
@@ -109,7 +102,6 @@ p {
 }
 
 /* Listas */
-
 ul {
   list-style: disc inside;
   margin-left: 0;
@@ -122,7 +114,6 @@ ul li {
 }
 
 /* Tabs da literatura negra */
-
 .tab {
   overflow: hidden;
   background-color: #111;
@@ -167,7 +158,6 @@ ul li {
 }
 
 /* Responsividade */
-
 @media (max-width: 600px) {
   .gallery {
     justify-content: center;

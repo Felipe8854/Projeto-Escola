@@ -1,123 +1,115 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria Cinemática</title>
+  <title>Site de Galeria</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header>
     <nav>
-      <button class="active" onclick="showSection('home')">Home</button>
-      <button onclick="showSection('sobre')">Sobre</button>
-      <button onclick="showSection('galeria')">Galeria</button>
-      <button onclick="showSection('literatura')">Literatura Negra</button>
+      <button class="nav-btn active" data-target="home">Home</button>
+      <button class="nav-btn" data-target="galeria">Galeria</button>
+      <button class="nav-btn" data-target="literatura">Literatura Negra</button>
+      <button class="nav-btn" data-target="info">Informações</button>
     </nav>
   </header>
 
+  <!-- Seções -->
   <section id="home">
-    <h1>Bem-vindo à Galeria Cinemática</h1>
-    <p>Explore imagens com efeitos de slide, fade e zoom suaves.</p>
+    <h1>Bem-vindo ao Site</h1>
+    <p>Explore nossa galeria e literatura negra com estilos modernos e interativos.</p>
   </section>
 
-  <section id="sobre" class="hidden">
-    <h1>Sobre</h1>
-    <p>Este projeto é uma demonstração de galeria com efeitos cinematográficos em JavaScript e CSS.</p>
-  </section>
-
-  <section id="galeria" class="hidden info-section">
+  <section id="galeria" class="hidden">
     <h1>Galeria</h1>
-    <img id="main-photo" src="https://picsum.photos/id/1015/600/400" alt="Imagem principal">
+    <img id="main-photo" src="https://via.placeholder.com/600x400" alt="Foto principal">
     <div class="gallery">
-      <img class="thumb active" src="https://picsum.photos/id/1015/600/400" alt="Thumb 1">
-      <img class="thumb" src="https://picsum.photos/id/1016/600/400" alt="Thumb 2">
-      <img class="thumb" src="https://picsum.photos/id/1018/600/400" alt="Thumb 3">
-      <img class="thumb" src="https://picsum.photos/id/1020/600/400" alt="Thumb 4">
+      <img class="thumb active" src="https://via.placeholder.com/100x100" alt="Miniatura 1">
+      <img class="thumb" src="https://via.placeholder.com/100x100/ff0000" alt="Miniatura 2">
+      <img class="thumb" src="https://via.placeholder.com/100x100/00ff00" alt="Miniatura 3">
+      <img class="thumb" src="https://via.placeholder.com/100x100/0000ff" alt="Miniatura 4">
     </div>
   </section>
 
   <section id="literatura" class="hidden">
     <h1>Literatura Negra</h1>
     <div class="tab">
-      <button class="active" onclick="openTab(event, 'autor1')">Autor 1</button>
-      <button onclick="openTab(event, 'autor2')">Autor 2</button>
-      <button onclick="openTab(event, 'autor3')">Autor 3</button>
+      <button class="tablinks active" data-tab="autor1">Autor 1</button>
+      <button class="tablinks" data-tab="autor2">Autor 2</button>
+      <button class="tablinks" data-tab="autor3">Autor 3</button>
     </div>
-
     <div id="autor1" class="tabcontent">
-      <img src="https://picsum.photos/id/1025/150/150" alt="Autor 1">
-      <p>Descrição do Autor 1 e suas obras.</p>
+      <img src="https://via.placeholder.com/150" alt="Autor 1">
+      <p>Biografia e obras do Autor 1.</p>
     </div>
-
     <div id="autor2" class="tabcontent hidden">
-      <img src="https://picsum.photos/id/1026/150/150" alt="Autor 2">
-      <p>Descrição do Autor 2 e suas obras.</p>
+      <img src="https://via.placeholder.com/150" alt="Autor 2">
+      <p>Biografia e obras do Autor 2.</p>
     </div>
-
     <div id="autor3" class="tabcontent hidden">
-      <img src="https://picsum.photos/id/1027/150/150" alt="Autor 3">
-      <p>Descrição do Autor 3 e suas obras.</p>
+      <img src="https://via.placeholder.com/150" alt="Autor 3">
+      <p>Biografia e obras do Autor 3.</p>
     </div>
+  </section>
+
+  <section id="info" class="hidden info-section">
+    <h1>Informações</h1>
+    <h2>Sobre o Site</h2>
+    <p>Este site é um exemplo de galeria interativa com literatura negra e efeitos modernos em CSS.</p>
+    <h2>Curiosidades</h2>
+    <ul>
+      <li>Usa transições suaves em imagens e abas.</li>
+      <li>Responsivo para dispositivos móveis.</li>
+      <li>Cores inspiradas em temas escuros e elegantes.</li>
+    </ul>
   </section>
 
   <script>
     // Navegação entre seções
-    function showSection(sectionId) {
-      document.querySelectorAll('section').forEach(sec => sec.classList.add('hidden'));
-      document.getElementById(sectionId).classList.remove('hidden');
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('section');
 
-      document.querySelectorAll('header nav button').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-    }
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        navButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-    // Tabs da literatura negra
-    function openTab(evt, tabName) {
-      document.querySelectorAll('.tabcontent').forEach(tc => tc.classList.add('hidden'));
-      document.getElementById(tabName).classList.remove('hidden');
+        sections.forEach(sec => {
+          if (sec.id === btn.dataset.target) sec.classList.remove('hidden');
+          else sec.classList.add('hidden');
+        });
+      });
+    });
 
-      document.querySelectorAll('.tab button').forEach(btn => btn.classList.remove('active'));
-      evt.currentTarget.classList.add('active');
-    }
-
-    // Galeria cinematográfica
+    // Galeria
     const mainPhoto = document.getElementById('main-photo');
-    const thumbs = document.querySelectorAll('.gallery img.thumb');
+    const thumbs = document.querySelectorAll('.thumb');
 
     thumbs.forEach(thumb => {
       thumb.addEventListener('click', () => {
-        if(mainPhoto.src === thumb.src) return;
-
-        // Atualiza miniaturas ativas
         thumbs.forEach(t => t.classList.remove('active'));
         thumb.classList.add('active');
+        mainPhoto.src = thumb.src;
+      });
+    });
 
-        // Efeito de saída: slide + zoom out + fade
-        mainPhoto.style.transform = 'translateX(-60px) scale(0.85)';
-        mainPhoto.style.opacity = 0;
-        mainPhoto.style.filter = 'brightness(0.7)';
+    // Abas de literatura
+    const tabLinks = document.querySelectorAll('.tablinks');
+    const tabContents = document.querySelectorAll('.tabcontent');
 
-        setTimeout(() => {
-          // Troca a imagem
-          mainPhoto.src = thumb.src;
+    tabLinks.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabLinks.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
 
-          // Efeito de entrada: slide da direita + zoom in + fade
-          mainPhoto.style.transform = 'translateX(60px) scale(0.85)';
-          mainPhoto.style.opacity = 0;
-          mainPhoto.style.filter = 'brightness(0.7)';
-
-          // Forçar reflow
-          void mainPhoto.offsetWidth;
-
-          // Transição final para posição normal
-          mainPhoto.style.transform = 'translateX(0) scale(1)';
-          mainPhoto.style.opacity = 1;
-          mainPhoto.style.filter = 'brightness(1)';
-        }, 600);
+        tabContents.forEach(c => {
+          if (c.id === tab.dataset.tab) c.classList.remove('hidden');
+          else c.classList.add('hidden');
+        });
       });
     });
   </script>
-
 </body>
 </html>
