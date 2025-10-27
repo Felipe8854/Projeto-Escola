@@ -1,132 +1,338 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cultura Afro</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Interativa</title>
+  <style>
+    /* Estilos gerais */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #f0c674;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header nav {
+      background-color: #111;
+      padding: 10px;
+      text-align: center;
+    }
+
+    header nav button {
+      background-color: #222;
+      border: none;
+      color: #f0c674;
+      padding: 10px 15px;
+      margin: 0 5px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    header nav button.active,
+    header nav button:hover {
+      background-color: #f0c674;
+      color: #000;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    /* Galeria */
+    #main-photo {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 10px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px #f0c674;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .gallery img.thumb {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .gallery img.thumb.active,
+    .gallery img.thumb:hover {
+      border-color: #f0c674;
+    }
+
+    /* Info Sections */
+    .info-section img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+      border-radius: 6px;
+      box-shadow: 0 0 10px #f0c674;
+    }
+
+    .info-section h2 {
+      margin-top: 20px;
+      color: #f0c674;
+    }
+
+    /* Listas */
+    ul {
+      list-style: disc inside;
+      margin-left: 0;
+      padding-left: 0;
+      color: #f0c674;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    /* Tabs da literatura negra */
+    .tab {
+      overflow: hidden;
+      background-color: #111;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .tab button {
+      background-color: #222;
+      border: none;
+      color: #f0c674;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 6px 6px 0 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab button.active,
+    .tab button:hover {
+      background-color: #f0c674;
+      color: #000;
+    }
+
+    .tabcontent {
+      background-color: #222;
+      padding: 15px;
+      border-radius: 0 6px 6px 6px;
+      color: #f0c674;
+      box-shadow: 0 0 10px #f0c674;
+    }
+
+    .tabcontent img {
+      max-width: 150px;
+      height: auto;
+      float: left;
+      margin-right: 15px;
+      border-radius: 6px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      .gallery {
+        justify-content: center;
+      }
+
+      .gallery img.thumb {
+        width: 60px;
+        height: 60px;
+      }
+
+      .tab {
+        flex-direction: column;
+      }
+
+      .tab button {
+        width: 100%;
+        border-radius: 6px;
+      }
+
+      .tabcontent img {
+        float: none;
+        margin: 0 auto 15px;
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
   <nav>
-    <button class="tab-button active" onclick="showSection('home')">Home</button>
-    <button class="tab-button" onclick="showSection('gallery')">Galeria</button>
-    <button class="tab-button" onclick="showSection('literature')">Literatura Negra</button>
+    <button class="tab-btn active" data-section="galeria">Galeria</button>
+    <button class="tab-btn" data-section="racismo">Racismo</button>
+    <button class="tab-btn" data-section="cultura">Cultura</button>
+    <button class="tab-btn" data-section="historico">Histórico</button>
+    <button class="tab-btn" data-section="consciencia">Consciência</button>
+    <button class="tab-btn" data-section="literatura">Literatura</button>
   </nav>
 </header>
 
-<!-- Home -->
-<section id="home">
-  <h1>Bem-vindo à Cultura Afro</h1>
-  <p>Este site celebra a arte, história e literatura afro-brasileira, explorando tradições, criatividade e resistência cultural.</p>
-  <img src="https://via.placeholder.com/600x300.png?text=Cultura+Afro" alt="Cultura Afro" class="info-img">
-  <p>Descubra imagens inspiradoras, obras literárias importantes e conteúdos que conectam o passado e o presente da cultura negra no Brasil e no mundo.</p>
-  <h2>Destaques</h2>
+<!-- Galeria -->
+<section id="galeria" class="active">
+  <h1>Galeria de Fotos</h1>
+  <img id="main-photo" src="foto1.jpg" alt="Foto principal">
+  <div class="gallery">
+    <img src="foto1_thumb.jpg" class="thumb active" onclick="changePhoto(this, 'foto1.jpg')">
+    <img src="foto2_thumb.jpg" class="thumb" onclick="changePhoto(this, 'foto2.jpg')">
+    <img src="foto3_thumb.jpg" class="thumb" onclick="changePhoto(this, 'foto3.jpg')">
+    <img src="foto4_thumb.jpg" class="thumb" onclick="changePhoto(this, 'foto4.jpg')">
+    <img src="foto5_thumb.jpg" class="thumb" onclick="changePhoto(this, 'foto5.jpg')">
+  </div>
+  <p>Esta galeria mostra momentos importantes da cultura negra, incluindo festivais, manifestações artísticas e personalidades de destaque.</p>
+</section>
+
+<!-- Racismo -->
+<section id="racismo" class="hidden info-section">
+  <h1>Racismo</h1>
+  <img src="racismo.jpg" alt="Imagem sobre racismo">
+  <p>O racismo é um problema estrutural que afeta diversos aspectos da sociedade. Historicamente, a população negra sofreu discriminação em várias áreas, incluindo educação, trabalho e direitos civis.</p>
   <ul>
-    <li>Fotografia de expressões culturais</li>
-    <li>Obras literárias e autores afrodescendentes</li>
-    <li>História e ancestralidade</li>
+    <li>Desigualdade racial no mercado de trabalho</li>
+    <li>Discriminação institucional e social</li>
+    <li>Movimentos de resistência e conscientização</li>
   </ul>
 </section>
 
-<!-- Galeria -->
-<section id="gallery" class="hidden">
-  <h1>Galeria de Imagens</h1>
-  <img id="main-photo" src="https://via.placeholder.com/600x400.png?text=Foto+1" alt="Imagem Principal">
-  <div class="gallery">
-    <img src="https://via.placeholder.com/150.png?text=Foto+1" class="thumb active" onclick="changePhoto(this)">
-    <img src="https://via.placeholder.com/150.png?text=Foto+2" class="thumb" onclick="changePhoto(this)">
-    <img src="https://via.placeholder.com/150.png?text=Foto+3" class="thumb" onclick="changePhoto(this)">
-    <img src="https://via.placeholder.com/150.png?text=Foto+4" class="thumb" onclick="changePhoto(this)">
-    <img src="https://via.placeholder.com/150.png?text=Foto+5" class="thumb" onclick="changePhoto(this)">
-    <img src="https://via.placeholder.com/150.png?text=Foto+6" class="thumb" onclick="changePhoto(this)">
-  </div>
-  <div class="info-section">
-    <h2>Explorando a Cultura Afro</h2>
-    <p>As fotos desta galeria destacam a riqueza cultural da comunidade afrodescendente, incluindo música, dança, festivais e tradições locais.</p>
-    <img src="https://via.placeholder.com/400x250.png?text=Dança+Afro" alt="Dança Afro">
-    <p>O objetivo é mostrar a diversidade e a criatividade presentes em cada expressão artística e social.</p>
-  </div>
+<!-- Cultura -->
+<section id="cultura" class="hidden info-section">
+  <h1>Cultura</h1>
+  <img src="cultura.jpg" alt="Imagem sobre cultura negra">
+  <p>A cultura negra é rica e diversificada, abrangendo música, dança, literatura, gastronomia e tradições religiosas.</p>
+  <h2>Música e Dança</h2>
+  <p>O samba, o maracatu, o reggae e o jazz são expressões culturais que nasceram da experiência afrodescendente.</p>
+  <h2>Gastronomia</h2>
+  <p>Pratos típicos incluem acarajé, feijoada e moqueca, mostrando a fusão de tradições africanas com a cultura local.</p>
 </section>
 
-<!-- Literatura Negra -->
-<section id="literature" class="hidden">
+<!-- Histórico -->
+<section id="historico" class="hidden info-section">
+  <h1>Histórico</h1>
+  <img src="historico.jpg" alt="Imagem histórica">
+  <p>A história da população negra é marcada por resistência e luta. Desde o período da escravidão até os movimentos contemporâneos, houve contínua busca por direitos e reconhecimento.</p>
+  <ul>
+    <li>Período da escravidão</li>
+    <li>Abolição e conquistas sociais</li>
+    <li>Movimentos pelos direitos civis</li>
+  </ul>
+</section>
+
+<!-- Consciência -->
+<section id="consciencia" class="hidden info-section">
+  <h1>Consciência</h1>
+  <img src="consciencia.jpg" alt="Imagem de consciência social">
+  <p>Promover a consciência racial envolve educação, diálogo e políticas de inclusão. É fundamental que todos compreendam a importância da igualdade e do respeito.</p>
+  <ul>
+    <li>Educação antirracista</li>
+    <li>Valorização da diversidade</li>
+    <li>Combate à discriminação</li>
+  </ul>
+</section>
+
+<!-- Literatura -->
+<section id="literatura" class="hidden info-section">
   <h1>Literatura Negra</h1>
   <div class="tab">
-    <button class="tablinks active" onclick="openTab(event, 'author1')">Chimamanda Ngozi Adichie</button>
-    <button class="tablinks" onclick="openTab(event, 'author2')">Maya Angelou</button>
-    <button class="tablinks" onclick="openTab(event, 'author3')">Conceição Evaristo</button>
+    <button class="tablinks active" data-tab="autor1">Autor 1</button>
+    <button class="tablinks" data-tab="autor2">Autor 2</button>
+    <button class="tablinks" data-tab="autor3">Autor 3</button>
+    <button class="tablinks" data-tab="autor4">Autor 4</button>
   </div>
 
-  <div id="author1" class="tabcontent" style="display:block">
-    <img src="https://via.placeholder.com/150.png?text=Chimamanda" alt="Chimamanda Ngozi Adichie">
-    <h2>Chimamanda Ngozi Adichie</h2>
-    <p>Autora nigeriana, conhecida por obras que exploram identidade, feminismo e experiências africanas contemporâneas.</p>
-    <ul>
-      <li>"Americanah" – Romance sobre imigração e identidade</li>
-      <li>"Meio Sol Amarelo" – História da guerra civil na Nigéria</li>
-      <li>"Sejamos Todos Feministas" – Ensaio sobre igualdade de gênero</li>
-    </ul>
+  <div id="autor1" class="tabcontent" style="display:block;">
+    <img src="autor1.jpg" alt="Autor 1">
+    <p>Autor 1 é conhecido por suas obras que retratam a experiência afro-brasileira, abordando temas de identidade e resistência cultural.</p>
   </div>
 
-  <div id="author2" class="tabcontent">
-    <img src="https://via.placeholder.com/150.png?text=Maya+Angelou" alt="Maya Angelou">
-    <h2>Maya Angelou</h2>
-    <p>Poeta, cantora e ativista americana, suas obras exploram racismo, resistência e identidade afro-americana.</p>
-    <ul>
-      <li>"Eu Sei Por Que o Pássaro Canta na Gaiola" – Autobiografia inspiradora</li>
-      <li>"And Still I Rise" – Poemas sobre superação</li>
-      <li>"Phenomenal Woman" – Celebração da mulher negra</li>
-    </ul>
+  <div id="autor2" class="tabcontent" style="display:none;">
+    <img src="autor2.jpg" alt="Autor 2">
+    <p>Autor 2 explorou em seus livros as desigualdades sociais e a luta contra o racismo, trazendo narrativas fortes e impactantes.</p>
   </div>
 
-  <div id="author3" class="tabcontent">
-    <img src="https://via.placeholder.com/150.png?text=Conceição+Evaristo" alt="Conceição Evaristo">
-    <h2>Conceição Evaristo</h2>
-    <p>Escritora brasileira, foca em relatos da mulher negra, sua ancestralidade e lutas sociais.</p>
-    <ul>
-      <li>"Ponciá Vicêncio" – Romance sobre desigualdade social</li>
-      <li>"Becos da Memória" – Poesias sobre identidade afro-brasileira</li>
-      <li>"Insubmissas Lágrimas de Mulheres" – Contos de resistência feminina</li>
-    </ul>
+  <div id="autor3" class="tabcontent" style="display:none;">
+    <img src="autor3.jpg" alt="Autor 3">
+    <p>Autor 3 escreveu sobre história, cultura e memória afrodescendente, incentivando a valorização da ancestralidade.</p>
+  </div>
+
+  <div id="autor4" class="tabcontent" style="display:none;">
+    <img src="autor4.jpg" alt="Autor 4">
+    <p>Autor 4 se destacou por suas poesias e contos que celebram a diversidade e a riqueza da cultura negra.</p>
   </div>
 </section>
 
 <script>
-  // Troca de seção do menu
-  function showSection(sectionId) {
-    const sections = document.querySelectorAll('section');
-    const buttons = document.querySelectorAll('header nav button');
-    
-    sections.forEach(sec => sec.classList.add('hidden'));
-    document.getElementById(sectionId).classList.remove('hidden');
+  // Alterna entre seções do menu
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const sections = document.querySelectorAll('section');
 
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      sections.forEach(section => section.classList.add('hidden'));
+      const sectionId = button.dataset.section;
+      document.getElementById(sectionId).classList.remove('hidden');
+    });
+  });
+
+  // Troca de foto principal da galeria
+  function changePhoto(thumbnail, src) {
+    document.getElementById('main-photo').src = src;
+    document.querySelectorAll('.thumb').forEach(img => img.classList.remove('active'));
+    thumbnail.classList.add('active');
   }
 
-  // Troca de foto na galeria
-  function changePhoto(img) {
-    const mainPhoto = document.getElementById('main-photo');
-    const thumbs = document.querySelectorAll('.gallery img.thumb');
-    mainPhoto.src = img.src;
+  // Tabs da literatura negra
+  const tabLinks = document.querySelectorAll('.tablinks');
+  const tabContents = document.querySelectorAll('.tabcontent');
 
-    thumbs.forEach(t => t.classList.remove('active'));
-    img.classList.add('active');
-  }
+  tabLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      tabLinks.forEach(btn => btn.classList.remove('active'));
+      link.classList.add('active');
 
-  // Função para trocar abas da literatura
-  function openTab(evt, tabName) {
-    const tabcontent = document.querySelectorAll('.tabcontent');
-    const tablinks = document.querySelectorAll('.tablinks');
-
-    tabcontent.forEach(tc => tc.style.display = 'none');
-    tablinks.forEach(tl => tl.classList.remove('active'));
-
-    document.getElementById(tabName).style.display = 'block';
-    evt.currentTarget.classList.add('active');
-  }
+      tabContents.forEach(content => content.style.display = 'none');
+      const tabId = link.dataset.tab;
+      document.getElementById(tabId).style.display = 'block';
+    });
+  });
 </script>
 
 </body>
