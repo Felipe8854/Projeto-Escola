@@ -1,87 +1,72 @@
+/* Estilos gerais */
 body {
   font-family: Arial, sans-serif;
-  background: #1a1a1a;
-  color: #f1f1f1;
-  text-align: center;
-  padding: 20px;
+  background-color: #000;
+  color: #f0c674;
   margin: 0;
+  padding: 0;
+  line-height: 1.6;
 }
 
-header {
-  background-color: #f39c12;
-  padding: 15px 0;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+header nav {
+  background-color: #111;
+  padding: 10px;
+  text-align: center;
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-nav button {
-  background-color: #f39c12;
+header nav button {
+  background-color: #222;
   border: none;
-  color: #1a1a1a;
-  padding: 10px 18px;
-  font-size: 1rem;
-  border-radius: 6px;
+  color: #f0c674;
+  padding: 10px 15px;
+  margin: 0 5px;
   cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
   transition: background-color 0.3s ease;
-  min-width: 140px;
 }
 
-nav button:hover {
-  background-color: #e67e22;
-}
-
-nav button.active {
-  background-color: #d87f0a;
-  box-shadow: 0 0 8px #d87f0a;
+header nav button.active,
+header nav button:hover {
+  background-color: #f0c674;
+  color: #000;
 }
 
 section {
-  max-width: 900px;
-  margin: 0 auto 40px auto;
-  text-align: center;
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #1a1a1a;
+  border-radius: 8px;
 }
 
-section.hidden {
+.hidden {
   display: none;
 }
 
 h1 {
-  color: #f39c12;
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-#intro-text {
-  max-width: 700px;
-  margin: 0 auto 30px auto;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: #ddd;
+p {
+  margin-bottom: 15px;
 }
+
+/* Galeria */
 
 #main-photo {
-  width: 80%;
-  max-width: 700px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #f39c12;
-  margin-bottom: 15px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-#photo-description {
-  max-width: 700px;
-  margin: 10px auto 30px auto;
-  font-size: 1rem;
-  font-style: italic;
-  color: #f0c674;
-  min-height: 60px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 20px #f0c674;
+  
+  transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  filter: brightness(1);
 }
 
 .gallery {
@@ -89,78 +74,122 @@ h1 {
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin-top: 15px;
-  margin-bottom: 25px;
 }
 
-.thumb {
-  width: 100px;
-  height: 70px;
+.gallery img.thumb {
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 6px;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
-.thumb:hover {
-  border-color: #f39c12;
-  transform: scale(1.05);
+.gallery img.thumb.active,
+.gallery img.thumb:hover {
+  border-color: #f0c674;
+  transform: scale(1.1);
 }
 
-.thumb.active {
-  border-color: #f39c12;
-  box-shadow: 0 0 10px #f39c12;
-}
+/* Info Sections */
 
-.info-section {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
-  color: #ddd;
+.info-section img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #f0c674;
 }
 
 .info-section h2 {
-  color: #f39c12;
-  margin-top: 30px;
-}
-
-.info-section h3 {
+  margin-top: 20px;
   color: #f0c674;
-  margin-top: 0;
 }
 
-.info-section p, .info-section ul {
-  margin: 10px 0 20px;
-  line-height: 1.5;
+/* Listas */
+
+ul {
+  list-style: disc inside;
+  margin-left: 0;
+  padding-left: 0;
+  color: #f0c674;
 }
 
-.info-section ul {
-  padding-left: 20px;
+ul li {
+  margin-bottom: 10px;
 }
 
-.info-section img {
-  width: 100%;
-  max-width: 700px;
-  border-radius: 10px;
+/* Tabs da literatura negra */
+
+.tab {
+  overflow: hidden;
+  background-color: #111;
+  border-radius: 6px;
   margin-bottom: 20px;
-  box-shadow: 0 0 12px #f39c12;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
+
+.tab button {
+  background-color: #222;
+  border: none;
+  color: #f0c674;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px 6px 0 0;
+  transition: background-color 0.3s ease;
+}
+
+.tab button.active,
+.tab button:hover {
+  background-color: #f0c674;
+  color: #000;
+}
+
+.tabcontent {
+  background-color: #222;
+  padding: 15px;
+  border-radius: 0 6px 6px 6px;
+  color: #f0c674;
+  box-shadow: 0 0 10px #f0c674;
+}
+
+.tabcontent img {
+  max-width: 150px;
+  height: auto;
+  float: left;
+  margin-right: 15px;
+  border-radius: 6px;
+}
+
+/* Responsividade */
 
 @media (max-width: 600px) {
-  #main-photo {
+  .gallery {
+    justify-content: center;
+  }
+
+  .gallery img.thumb {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tab {
+    flex-direction: column;
+  }
+
+  .tab button {
     width: 100%;
+    border-radius: 6px;
   }
-  .thumb {
-    width: 80px;
-    height: 55px;
-  }
-  nav {
-    gap: 10px;
-  }
-  nav button {
-    min-width: 110px;
-    font-size: 0.9rem;
-    padding: 8px 12px;
+
+  .tabcontent img {
+    float: none;
+    margin: 0 auto 15px;
+    display: block;
   }
 }

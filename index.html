@@ -1,261 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Consciência Negra – Galeria e Informações</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #1a1a1a;
-      color: #f1f1f1;
-      text-align: center;
-      padding: 20px;
-      margin: 0;
-    }
-    header {
-      background-color: #f39c12;
-      padding: 15px 0;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    nav button {
-      background-color: #f39c12;
-      border: none;
-      color: #1a1a1a;
-      padding: 10px 18px;
-      font-size: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      min-width: 140px;
-    }
-    nav button:hover {
-      background-color: #e67e22;
-    }
-    nav button.active {
-      background-color: #d87f0a;
-      box-shadow: 0 0 8px #d87f0a;
-    }
-    section {
-      max-width: 900px;
-      margin: 0 auto 40px auto;
-      text-align: center;
-    }
-    section.hidden {
-      display: none;
-    }
-    h1 {
-      color: #f39c12;
-      margin-bottom: 10px;
-    }
-    #intro-text {
-      max-width: 700px;
-      margin: 0 auto 30px auto;
-      font-size: 1.1rem;
-      line-height: 1.5;
-      color: #ddd;
-    }
-    #main-photo {
-      width: 80%;
-      max-width: 700px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #f39c12;
-      margin-bottom: 15px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    #photo-description {
-      max-width: 700px;
-      margin: 10px auto 30px auto;
-      font-size: 1rem;
-      font-style: italic;
-      color: #f0c674;
-      min-height: 60px;
-    }
-    .gallery {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 15px;
-      margin-bottom: 25px;
-    }
-    .thumb {
-      width: 100px;
-      height: 70px;
-      object-fit: cover;
-      border-radius: 6px;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: border-color 0.2s ease, transform 0.2s ease;
-    }
-    .thumb:hover {
-      border-color: #f39c12;
-      transform: scale(1.05);
-    }
-    .thumb.active {
-      border-color: #f39c12;
-      box-shadow: 0 0 10px #f39c12;
-    }
-    .info-section {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: left;
-      color: #ddd;
-    }
-    .info-section h2 {
-      color: #f39c12;
-      margin-top: 30px;
-    }
-    .info-section h3 {
-      color: #f0c674;
-      margin-top: 0;
-    }
-    .info-section p, .info-section ul {
-      margin: 10px 0 20px;
-      line-height: 1.5;
-    }
-    .info-section ul {
-      padding-left: 20px;
-    }
-    .info-section img {
-      width: 100%;
-      max-width: 700px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 12px #f39c12;
-    }
-    @media (max-width: 600px) {
-      #main-photo {
-        width: 100%;
-      }
-      .thumb {
-        width: 80px;
-        height: 55px;
-      }
-      nav {
-        gap: 10px;
-      }
-      nav button {
-        min-width: 110px;
-        font-size: 0.9rem;
-        padding: 8px 12px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria Cinemática</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header>
     <nav>
-      <button id="menu-galeria" class="active">Galeria</button>
-      <button id="menu-racismo">Luta contra o Racismo</button>
-      <button id="menu-cultura">Cultura Afro-brasileira</button>
-      <button id="menu-historico">História e Legado</button>
-      <button id="menu-consciencia">Conscientização e Educação</button>
-      <button id="menu-literatura">Literatura Negra</button>
-      <button id="menu-arteafro">Arte Afro</button>
+      <button class="active" onclick="showSection('home')">Home</button>
+      <button onclick="showSection('sobre')">Sobre</button>
+      <button onclick="showSection('galeria')">Galeria</button>
+      <button onclick="showSection('literatura')">Literatura Negra</button>
     </nav>
   </header>
 
-  <!-- ... (todas as seções anteriores são idênticas ao seu original) ... -->
+  <section id="home">
+    <h1>Bem-vindo à Galeria Cinemática</h1>
+    <p>Explore imagens com efeitos de slide, fade e zoom suaves.</p>
+  </section>
 
-  <!-- Seção Conscientização & Educação -->
-  <section id="info-section-5" class="hidden">
-    <h1>Conscientização e Educação para Igualdade</h1>
-    <div class="info-section">
-      <img src="imagem/educacao_consciencia_negra.jpg" alt="Imagem relacionada à educação e consciência negra" />
-      <p>A <strong>educação</strong> é uma ferramenta fundamental para desmantelar o racismo e promover a igualdade racial. É através do conhecimento que se combate a ignorância e se valoriza a diversidade. A <strong>Lei 10.639/03</strong>, que torna obrigatório o ensino de História e Cultura Afro-Brasileira e Africana nas escolas, é um avanço crucial para resgatar e valorizar a contribuição do povo negro para a identidade nacional. Campanhas de conscientização, eventos culturais e debates abertos também são essenciais para ampliar o respeito, combater preconceitos e garantir o reconhecimento dos direitos da população negra.</p>
+  <section id="sobre" class="hidden">
+    <h1>Sobre</h1>
+    <p>Este projeto é uma demonstração de galeria com efeitos cinematográficos em JavaScript e CSS.</p>
+  </section>
 
-      <h2>Como promover a conscientização?</h2>
-      <ul>
-        <li>Participar de eventos culturais e debates sobre a temática racial, buscando aprender e ouvir.</li>
-        <li>Incentivar a leitura de <strong>autores negros</strong> e a produção artística afro-brasileira em todas as suas formas.</li>
-        <li>Combater preconceitos e discriminações no dia a dia, corrigindo falas e atitudes racistas.</li>
-        <li>Apoiar e fiscalizar políticas públicas que promovam a igualdade racial e a reparação histórica.</li>
-      </ul>
-
-      <img src="imagem/educacao_inclusiva.jpg" alt="Educação inclusiva e diversidade racial nas escolas" />
-
-      <h2>Importância da Representatividade</h2>
-      <p>Quando estudantes negros se veem representados nos livros, nos professores e nas histórias contadas em sala de aula, há um fortalecimento da autoestima, do senso de pertencimento e do respeito mútuo. A representatividade combate o silenciamento e promove uma educação verdadeiramente democrática.</p>
-
-      <h2>Educação Antirracista no Cotidiano Escolar</h2>
-      <p>Mais do que uma disciplina, a educação antirracista deve ser um princípio norteador das práticas pedagógicas. Isso envolve abordar o racismo de forma crítica, valorizar as culturas africanas e afro-brasileiras e acolher todas as identidades no ambiente escolar, tornando-o mais justo e igualitário para todos.</p>
-
-      <!-- NOVO CONTEÚDO ADICIONADO -->
-      <h2>Projetos Educacionais de Valorização da Cultura Negra</h2>
-      <img src="imagem/educacao2.jpg" alt="Professores e alunos em projetos culturais" />
-      <p>Escolas e universidades em todo o país vêm desenvolvendo projetos de valorização da cultura afro-brasileira. Essas iniciativas incluem oficinas de percussão, contação de histórias africanas, feiras culturais e debates com autores negros. Esses espaços de troca permitem que a história e as tradições africanas sejam estudadas sob uma ótica de orgulho e pertencimento, desconstruindo estigmas e promovendo o respeito à diversidade.</p>
-
-      <h2>Educação Transformadora e Inclusiva</h2>
-      <img src="imagem/educacao3.jpg" alt="Aula coletiva sobre história e diversidade" />
-      <p>Uma educação transformadora é aquela que acolhe, respeita e dá voz a todas as pessoas. A inclusão de conteúdos sobre a cultura africana e afro-brasileira não é apenas um ato pedagógico, mas uma reparação histórica. Quando estudantes aprendem sobre reis e rainhas africanos, civilizações antigas e heróis negros brasileiros, desenvolvem uma nova percepção de mundo e de si mesmos, baseando-se no respeito, empatia e igualdade.</p>
-      <!-- FIM DO NOVO CONTEÚDO -->
+  <section id="galeria" class="hidden info-section">
+    <h1>Galeria</h1>
+    <img id="main-photo" src="https://picsum.photos/id/1015/600/400" alt="Imagem principal">
+    <div class="gallery">
+      <img class="thumb active" src="https://picsum.photos/id/1015/600/400" alt="Thumb 1">
+      <img class="thumb" src="https://picsum.photos/id/1016/600/400" alt="Thumb 2">
+      <img class="thumb" src="https://picsum.photos/id/1018/600/400" alt="Thumb 3">
+      <img class="thumb" src="https://picsum.photos/id/1020/600/400" alt="Thumb 4">
     </div>
   </section>
 
-  <!-- ... (restante do seu código continua exatamente igual, incluindo Literatura Negra e Arte Afro) ... -->
+  <section id="literatura" class="hidden">
+    <h1>Literatura Negra</h1>
+    <div class="tab">
+      <button class="active" onclick="openTab(event, 'autor1')">Autor 1</button>
+      <button onclick="openTab(event, 'autor2')">Autor 2</button>
+      <button onclick="openTab(event, 'autor3')">Autor 3</button>
+    </div>
+
+    <div id="autor1" class="tabcontent">
+      <img src="https://picsum.photos/id/1025/150/150" alt="Autor 1">
+      <p>Descrição do Autor 1 e suas obras.</p>
+    </div>
+
+    <div id="autor2" class="tabcontent hidden">
+      <img src="https://picsum.photos/id/1026/150/150" alt="Autor 2">
+      <p>Descrição do Autor 2 e suas obras.</p>
+    </div>
+
+    <div id="autor3" class="tabcontent hidden">
+      <img src="https://picsum.photos/id/1027/150/150" alt="Autor 3">
+      <p>Descrição do Autor 3 e suas obras.</p>
+    </div>
+  </section>
 
   <script>
-    const sections = {
-      galeria: document.getElementById('galeria-section'),
-      racismo: document.getElementById('info-section-2'),
-      cultura: document.getElementById('info-section-3'),
-      historico: document.getElementById('info-section-4'),
-      consciencia: document.getElementById('info-section-5'),
-      literatura: document.getElementById('info-section-6'),
-      arteafro: document.getElementById('info-section-7')
-    };
-    const buttons = {
-      galeria: document.getElementById('menu-galeria'),
-      racismo: document.getElementById('menu-racismo'),
-      cultura: document.getElementById('menu-cultura'),
-      historico: document.getElementById('menu-historico'),
-      consciencia: document.getElementById('menu-consciencia'),
-      literatura: document.getElementById('menu-literatura'),
-      arteafro: document.getElementById('menu-arteafro')
-    };
+    // Navegação entre seções
+    function showSection(sectionId) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
 
-    function hideAllSections() {
-      for (const key in sections) {
-        sections[key].classList.add('hidden');
-      }
-    }
-    function deactivateAllButtons() {
-      for (const key in buttons) {
-        buttons[key].classList.remove('active');
-      }
-    }
-    function showSection(sectionName) {
-      hideAllSections();
-      deactivateAllButtons();
-      sections[sectionName].classList.remove('hidden');
-      buttons[sectionName].classList.add('active');
+      document.querySelectorAll('header nav button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
     }
 
-    buttons.galeria.addEventListener('click', () => showSection('galeria'));
-    buttons.racismo.addEventListener('click', () => showSection('racismo'));
-    buttons.cultura.addEventListener('click', () => showSection('cultura'));
-    buttons.historico.addEventListener('click', () => showSection('historico'));
-    buttons.consciencia.addEventListener('click', () => showSection('consciencia'));
-    buttons.literatura.addEventListener('click', () => showSection('literatura'));
-    buttons.arteafro.addEventListener('click', () => showSection('arteafro'));
+    // Tabs da literatura negra
+    function openTab(evt, tabName) {
+      document.querySelectorAll('.tabcontent').forEach(tc => tc.classList.add('hidden'));
+      document.getElementById(tabName).classList.remove('hidden');
 
-    function changePhoto(element, photoSrc, description) {
-      const mainPhoto = document.getElementById('main-photo');
-      mainPhoto.src = photoSrc;
-      const photoDesc = document.getElementById('photo-description');
-      photoDesc.textContent = description;
-      document.querySelectorAll('.thumb').forEach(thumb => thumb.classList.remove('active'));
-      element.classList.add('active');
+      document.querySelectorAll('.tab button').forEach(btn => btn.classList.remove('active'));
+      evt.currentTarget.classList.add('active');
     }
+
+    // Galeria cinematográfica
+    const mainPhoto = document.getElementById('main-photo');
+    const thumbs = document.querySelectorAll('.gallery img.thumb');
+
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        if(mainPhoto.src === thumb.src) return;
+
+        // Atualiza miniaturas ativas
+        thumbs.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+
+        // Efeito de saída: slide + zoom out + fade
+        mainPhoto.style.transform = 'translateX(-60px) scale(0.85)';
+        mainPhoto.style.opacity = 0;
+        mainPhoto.style.filter = 'brightness(0.7)';
+
+        setTimeout(() => {
+          // Troca a imagem
+          mainPhoto.src = thumb.src;
+
+          // Efeito de entrada: slide da direita + zoom in + fade
+          mainPhoto.style.transform = 'translateX(60px) scale(0.85)';
+          mainPhoto.style.opacity = 0;
+          mainPhoto.style.filter = 'brightness(0.7)';
+
+          // Forçar reflow
+          void mainPhoto.offsetWidth;
+
+          // Transição final para posição normal
+          mainPhoto.style.transform = 'translateX(0) scale(1)';
+          mainPhoto.style.opacity = 1;
+          mainPhoto.style.filter = 'brightness(1)';
+        }, 600);
+      });
+    });
   </script>
+
 </body>
 </html>
