@@ -1,115 +1,308 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site de Galeria</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Página Interativa</title>
+  <style>
+    /* Estilos gerais */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #f0c674;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header nav {
+      background-color: #111;
+      padding: 10px;
+      text-align: center;
+    }
+
+    header nav button {
+      background-color: #222;
+      border: none;
+      color: #f0c674;
+      padding: 10px 15px;
+      margin: 0 5px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    header nav button.active,
+    header nav button:hover {
+      background-color: #f0c674;
+      color: #000;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    /* Galeria */
+    #main-photo {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 10px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px #f0c674;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .gallery img.thumb {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .gallery img.thumb.active,
+    .gallery img.thumb:hover {
+      border-color: #f0c674;
+    }
+
+    /* Info Sections */
+    .info-section img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+      border-radius: 6px;
+      box-shadow: 0 0 10px #f0c674;
+    }
+
+    .info-section h2 {
+      margin-top: 20px;
+      color: #f0c674;
+    }
+
+    /* Listas */
+    ul {
+      list-style: disc inside;
+      margin-left: 0;
+      padding-left: 0;
+      color: #f0c674;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    /* Tabs da literatura negra */
+    .tab {
+      overflow: hidden;
+      background-color: #111;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .tab button {
+      background-color: #222;
+      border: none;
+      color: #f0c674;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 6px 6px 0 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab button.active,
+    .tab button:hover {
+      background-color: #f0c674;
+      color: #000;
+    }
+
+    .tabcontent {
+      background-color: #222;
+      padding: 15px;
+      border-radius: 0 6px 6px 6px;
+      color: #f0c674;
+      box-shadow: 0 0 10px #f0c674;
+    }
+
+    .tabcontent img {
+      max-width: 150px;
+      height: auto;
+      float: left;
+      margin-right: 15px;
+      border-radius: 6px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      .gallery {
+        justify-content: center;
+      }
+
+      .gallery img.thumb {
+        width: 60px;
+        height: 60px;
+      }
+
+      .tab {
+        flex-direction: column;
+      }
+
+      .tab button {
+        width: 100%;
+        border-radius: 6px;
+      }
+
+      .tabcontent img {
+        float: none;
+        margin: 0 auto 15px;
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <button class="nav-btn active" data-target="home">Home</button>
-      <button class="nav-btn" data-target="galeria">Galeria</button>
-      <button class="nav-btn" data-target="literatura">Literatura Negra</button>
-      <button class="nav-btn" data-target="info">Informações</button>
-    </nav>
-  </header>
 
-  <!-- Seções -->
-  <section id="home">
-    <h1>Bem-vindo ao Site</h1>
-    <p>Explore nossa galeria e literatura negra com estilos modernos e interativos.</p>
-  </section>
+<header>
+  <nav>
+    <button class="tab-btn active" data-section="galeria">Galeria</button>
+    <button class="tab-btn" data-section="racismo">Racismo</button>
+    <button class="tab-btn" data-section="cultura">Cultura</button>
+    <button class="tab-btn" data-section="historico">Histórico</button>
+    <button class="tab-btn" data-section="consciencia">Consciência</button>
+    <button class="tab-btn" data-section="literatura">Literatura</button>
+  </nav>
+</header>
 
-  <section id="galeria" class="hidden">
-    <h1>Galeria</h1>
-    <img id="main-photo" src="https://via.placeholder.com/600x400" alt="Foto principal">
-    <div class="gallery">
-      <img class="thumb active" src="https://via.placeholder.com/100x100" alt="Miniatura 1">
-      <img class="thumb" src="https://via.placeholder.com/100x100/ff0000" alt="Miniatura 2">
-      <img class="thumb" src="https://via.placeholder.com/100x100/00ff00" alt="Miniatura 3">
-      <img class="thumb" src="https://via.placeholder.com/100x100/0000ff" alt="Miniatura 4">
-    </div>
-  </section>
+<!-- Galeria -->
+<section id="galeria" class="active">
+  <h1>Galeria de Fotos</h1>
+  <img id="main-photo" src="foto1.jpg" alt="Foto principal">
+  <div class="gallery">
+    <img src="foto1_thumb.jpg" class="thumb active" onclick="changePhoto(this, 'foto1.jpg')">
+    <img src="foto2_thumb.jpg" class="thumb" onclick="changePhoto(this, 'foto2.jpg')">
+    <img src="foto3_thumb.jpg" class="thumb" onclick="changePhoto(this, 'foto3.jpg')">
+    <img src="foto4_thumb.jpg" class="thumb" onclick="changePhoto(this, 'foto4.jpg')">
+  </div>
+</section>
 
-  <section id="literatura" class="hidden">
-    <h1>Literatura Negra</h1>
-    <div class="tab">
-      <button class="tablinks active" data-tab="autor1">Autor 1</button>
-      <button class="tablinks" data-tab="autor2">Autor 2</button>
-      <button class="tablinks" data-tab="autor3">Autor 3</button>
-    </div>
-    <div id="autor1" class="tabcontent">
-      <img src="https://via.placeholder.com/150" alt="Autor 1">
-      <p>Biografia e obras do Autor 1.</p>
-    </div>
-    <div id="autor2" class="tabcontent hidden">
-      <img src="https://via.placeholder.com/150" alt="Autor 2">
-      <p>Biografia e obras do Autor 2.</p>
-    </div>
-    <div id="autor3" class="tabcontent hidden">
-      <img src="https://via.placeholder.com/150" alt="Autor 3">
-      <p>Biografia e obras do Autor 3.</p>
-    </div>
-  </section>
+<!-- Racismo -->
+<section id="racismo" class="hidden info-section">
+  <h1>Racismo</h1>
+  <p>Conteúdo sobre racismo...</p>
+</section>
 
-  <section id="info" class="hidden info-section">
-    <h1>Informações</h1>
-    <h2>Sobre o Site</h2>
-    <p>Este site é um exemplo de galeria interativa com literatura negra e efeitos modernos em CSS.</p>
-    <h2>Curiosidades</h2>
-    <ul>
-      <li>Usa transições suaves em imagens e abas.</li>
-      <li>Responsivo para dispositivos móveis.</li>
-      <li>Cores inspiradas em temas escuros e elegantes.</li>
-    </ul>
-  </section>
+<!-- Cultura -->
+<section id="cultura" class="hidden info-section">
+  <h1>Cultura</h1>
+  <p>Conteúdo sobre cultura...</p>
+</section>
 
-  <script>
-    // Navegação entre seções
-    const navButtons = document.querySelectorAll('.nav-btn');
-    const sections = document.querySelectorAll('section');
+<!-- Histórico -->
+<section id="historico" class="hidden info-section">
+  <h1>Histórico</h1>
+  <p>Conteúdo histórico...</p>
+</section>
 
-    navButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        navButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+<!-- Consciência -->
+<section id="consciencia" class="hidden info-section">
+  <h1>Consciência</h1>
+  <p>Conteúdo sobre consciência...</p>
+</section>
 
-        sections.forEach(sec => {
-          if (sec.id === btn.dataset.target) sec.classList.remove('hidden');
-          else sec.classList.add('hidden');
-        });
-      });
+<!-- Literatura -->
+<section id="literatura" class="hidden info-section">
+  <h1>Literatura Negra</h1>
+  <div class="tab">
+    <button class="tablinks active" data-tab="autor1">Autor 1</button>
+    <button class="tablinks" data-tab="autor2">Autor 2</button>
+    <button class="tablinks" data-tab="autor3">Autor 3</button>
+  </div>
+
+  <div id="autor1" class="tabcontent" style="display:block;">
+    <img src="autor1.jpg" alt="Autor 1">
+    <p>Informações sobre Autor 1...</p>
+  </div>
+
+  <div id="autor2" class="tabcontent" style="display:none;">
+    <img src="autor2.jpg" alt="Autor 2">
+    <p>Informações sobre Autor 2...</p>
+  </div>
+
+  <div id="autor3" class="tabcontent" style="display:none;">
+    <img src="autor3.jpg" alt="Autor 3">
+    <p>Informações sobre Autor 3...</p>
+  </div>
+</section>
+
+<script>
+  // Alterna entre seções
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const sections = document.querySelectorAll('section');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      sections.forEach(section => section.classList.add('hidden'));
+      const sectionId = button.dataset.section;
+      document.getElementById(sectionId).classList.remove('hidden');
     });
+  });
 
-    // Galeria
-    const mainPhoto = document.getElementById('main-photo');
-    const thumbs = document.querySelectorAll('.thumb');
+  // Troca de foto principal da galeria
+  function changePhoto(thumbnail, src) {
+    document.getElementById('main-photo').src = src;
+    document.querySelectorAll('.thumb').forEach(img => img.classList.remove('active'));
+    thumbnail.classList.add('active');
+  }
 
-    thumbs.forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        thumbs.forEach(t => t.classList.remove('active'));
-        thumb.classList.add('active');
-        mainPhoto.src = thumb.src;
-      });
+  // Tabs da literatura negra
+  const tabLinks = document.querySelectorAll('.tablinks');
+  const tabContents = document.querySelectorAll('.tabcontent');
+
+  tabLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      tabLinks.forEach(btn => btn.classList.remove('active'));
+      link.classList.add('active');
+
+      tabContents.forEach(content => content.style.display = 'none');
+      const tabId = link.dataset.tab;
+      document.getElementById(tabId).style.display = 'block';
     });
+  });
+</script>
 
-    // Abas de literatura
-    const tabLinks = document.querySelectorAll('.tablinks');
-    const tabContents = document.querySelectorAll('.tabcontent');
-
-    tabLinks.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabLinks.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        tabContents.forEach(c => {
-          if (c.id === tab.dataset.tab) c.classList.remove('hidden');
-          else c.classList.add('hidden');
-        });
-      });
-    });
-  </script>
 </body>
 </html>
