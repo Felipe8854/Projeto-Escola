@@ -1,339 +1,178 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <base target="_self">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Interativa</title>
+  <title>Vintage Studio - Ateliê de Fotografia Retrô</title>
+  <meta name="description" content="Ateliê de fotografia especializado em estilo retrô, capturando momentos com elegância atemporal.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bege': '#F5F5DC',
+            'bege-escuro': '#E8E4D9',
+            'marrom': '#8B4513',
+            'marrom-claro': '#A0522D',
+            'dourado': '#D4AF37',
+            'cinza-vintage': '#696969'
+          },
+          fontFamily: {
+            'vintage': ['"Cinzel"', 'serif'],
+            'elegante': ['"Playfair Display"', 'serif'],
+            'script': ['"Dancing Script"', 'cursive']
+          }
+        }
+      }
+    };
+  </script>
+
   <style>
-    /* Estilos gerais */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #f0c674;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-
-    header nav {
-      background-color: #111;
-      padding: 10px;
-      text-align: center;
-    }
-
-    header nav button {
-      background-color: #222;
-      border: none;
-      color: #f0c674;
-      padding: 10px 15px;
-      margin: 0 5px;
-      cursor: pointer;
-      font-size: 16px;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
-    }
-
-    header nav button.active,
-    header nav button:hover {
-      background-color: #f0c674;
-      color: #000;
-    }
-
-    section {
-      padding: 20px;
-      max-width: 800px;
-      margin: 20px auto;
-      background-color: #1a1a1a;
-      border-radius: 8px;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    p {
-      margin-bottom: 15px;
-    }
-
-    /* Galeria */
-    #main-photo {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      margin: 0 auto 10px;
-      border-radius: 6px;
-      box-shadow: 0 0 10px #f0c674;
-    }
-
-    .gallery {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .gallery img.thumb {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 6px;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: border-color 0.3s ease;
-    }
-
-    .gallery img.thumb.active,
-    .gallery img.thumb:hover {
-      border-color: #f0c674;
-    }
-
-    /* Info Sections */
-    .info-section img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 15px auto;
-      border-radius: 6px;
-      box-shadow: 0 0 10px #f0c674;
-    }
-
-    .info-section h2 {
-      margin-top: 20px;
-      color: #f0c674;
-    }
-
-    /* Listas */
-    ul {
-      list-style: disc inside;
-      margin-left: 0;
-      padding-left: 0;
-      color: #f0c674;
-    }
-
-    ul li {
-      margin-bottom: 10px;
-    }
-
-    /* Tabs da literatura negra */
-    .tab {
-      overflow: hidden;
-      background-color: #111;
-      border-radius: 6px;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .tab button {
-      background-color: #222;
-      border: none;
-      color: #f0c674;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 16px;
-      border-radius: 6px 6px 0 0;
-      transition: background-color 0.3s ease;
-    }
-
-    .tab button.active,
-    .tab button:hover {
-      background-color: #f0c674;
-      color: #000;
-    }
-
-    .tabcontent {
-      background-color: #222;
-      padding: 15px;
-      border-radius: 0 6px 6px 6px;
-      color: #f0c674;
-      box-shadow: 0 0 10px #f0c674;
-    }
-
-    .tabcontent img {
-      max-width: 150px;
-      height: auto;
-      float: left;
-      margin-right: 15px;
-      border-radius: 6px;
-    }
-
-    /* Responsividade */
-    @media (max-width: 600px) {
-      .gallery {
-        justify-content: center;
-      }
-
-      .gallery img.thumb {
-        width: 60px;
-        height: 60px;
-      }
-
-      .tab {
-        flex-direction: column;
-      }
-
-      .tab button {
-        width: 100%;
-        border-radius: 6px;
-      }
-
-      .tabcontent img {
-        float: none;
-        margin: 0 auto 15px;
-        display: block;
-      }
-    }
+    .pagina { display: none; }
+    .pagina.ativa { display: block; }
   </style>
 </head>
-<body>
+<body class="bg-bege min-h-screen">
 
-<header>
-  <nav>
-    <button class="tab-btn active" data-section="galeria">Galeria</button>
-    <button class="tab-btn" data-section="racismo">Racismo</button>
-    <button class="tab-btn" data-section="cultura">Cultura</button>
-    <button class="tab-btn" data-section="historico">Histórico</button>
-    <button class="tab-btn" data-section="consciencia">Consciência</button>
-    <button class="tab-btn" data-section="literatura">Literatura</button>
+  <!-- NAVBAR -->
+  <nav class="bg-marrom shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 flex justify-between items-center py-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-dourado rounded-full flex items-center justify-center">
+          <i class="fas fa-camera text-marrom"></i>
+        </div>
+        <h1 class="font-vintage text-2xl text-bege">Vintage Studio</h1>
+      </div>
+      <div class="space-x-6">
+        <button onclick="mostrarPagina('slogan')" class="text-bege font-elegante hover:text-dourado">Início</button>
+        <button onclick="mostrarPagina('propaganda')" class="text-bege font-elegante hover:text-dourado">Ateliê</button>
+        <button onclick="mostrarPagina('publico')" class="text-bege font-elegante hover:text-dourado">Público</button>
+        <button onclick="mostrarPagina('oferta')" class="text-bege font-elegante hover:text-dourado">Promoção</button>
+        <button onclick="mostrarPagina('significado')" class="text-bege font-elegante hover:text-dourado">Significado</button>
+      </div>
+    </div>
   </nav>
-</header>
 
-<!-- Galeria -->
-<section id="galeria" class="active">
-  <h1>Galeria de Fotos</h1>
-  <img id="main-photo" src="foto1.jpg" alt="Foto principal">
-  <div class="gallery">
-    <img src="foto1_thumb.jpg" class="thumb active" onclick="changePhoto(this, 'foto1.jpg')">
-    <img src="foto2_thumb.jpg" class="thumb" onclick="changePhoto(this, 'foto2.jpg')">
-    <img src="foto3_thumb.jpg" class="thumb" onclick="changePhoto(this, 'foto3.jpg')">
-    <img src="foto4_thumb.jpg" class="thumb" onclick="changePhoto(this, 'foto4.jpg')">
-    <img src="foto5_thumb.jpg" class="thumb" onclick="changePhoto(this, 'foto5.jpg')">
-  </div>
-  <p>Esta galeria mostra momentos importantes da cultura negra, incluindo festivais, manifestações artísticas e personalidades de destaque.</p>
-</section>
+  <!-- CONTEÚDO -->
+  <main class="container mx-auto px-4 py-8">
 
-<!-- Racismo -->
-<section id="racismo" class="hidden info-section">
-  <h1>Racismo</h1>
-  <img src="racismo.jpg" alt="Imagem sobre racismo">
-  <p>O racismo é um problema estrutural que afeta diversos aspectos da sociedade. Historicamente, a população negra sofreu discriminação em várias áreas, incluindo educação, trabalho e direitos civis.</p>
-  <ul>
-    <li>Desigualdade racial no mercado de trabalho</li>
-    <li>Discriminação institucional e social</li>
-    <li>Movimentos de resistência e conscientização</li>
-  </ul>
-</section>
+    <!-- 1. PÁGINA INICIAL -->
+    <div id="pagina-slogan" class="pagina ativa">
+      <div class="bg-white bg-opacity-90 rounded-2xl p-8 md:p-12 shadow-xl border-2 border-bege-escuro text-center">
+        <i class="fas fa-camera-retro text-6xl text-marrom mb-4"></i>
+        <h2 class="font-script text-5xl text-marrom mb-4">Capturando Almas em Preto e Branco</h2>
+        <p class="font-elegante text-lg text-cinza-vintage mb-6">Onde cada clique conta uma história atemporal.</p>
+        <p class="font-elegante text-lg text-cinza-vintage leading-relaxed mb-8">
+          No Vintage Studio, transformamos momentos em lembranças elegantes, com o charme único do estilo retrô.
+        </p>
+        <button onclick="mostrarPagina('propaganda')" class="bg-marrom text-bege px-8 py-4 rounded-full hover:bg-marrom-claro transition-all">
+          <i class="fas fa-arrow-right mr-2"></i> Conheça o Ateliê
+        </button>
+      </div>
+    </div>
 
-<!-- Cultura -->
-<section id="cultura" class="hidden info-section">
-  <h1>Cultura</h1>
-  <img src="cultura.jpg" alt="Imagem sobre cultura negra">
-  <p>A cultura negra é rica e diversificada, abrangendo música, dança, literatura, gastronomia e tradições religiosas.</p>
-  <h2>Música e Dança</h2>
-  <p>O samba, o maracatu, o reggae e o jazz são expressões culturais que nasceram da experiência afrodescendente.</p>
-  <h2>Gastronomia</h2>
-  <p>Pratos típicos incluem acarajé, feijoada e moqueca, mostrando a fusão de tradições africanas com a cultura local.</p>
-</section>
+    <!-- 2. SOBRE O ATELIÊ -->
+    <div id="pagina-propaganda" class="pagina hidden">
+      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-2 border-bege-escuro">
+        <div class="text-center mb-8">
+          <i class="fas fa-star text-4xl text-dourado mb-4"></i>
+          <h2 class="font-vintage text-4xl text-marrom">Por Que Escolher o Vintage Studio?</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div>
+            <i class="fas fa-camera text-marrom text-3xl mb-3"></i>
+            <h3 class="font-elegante text-xl mb-2">Equipamento Autêntico</h3>
+            <p class="text-cinza-vintage">Câmeras analógicas clássicas que capturam texturas únicas.</p>
+          </div>
+          <div>
+            <i class="fas fa-magic text-dourado text-3xl mb-3"></i>
+            <h3 class="font-elegante text-xl mb-2">Processo Artesanal</h3>
+            <p class="text-cinza-vintage">Cada fotografia é revelada e tratada manualmente.</p>
+          </div>
+          <div>
+            <i class="fas fa-palette text-marrom text-3xl mb-3"></i>
+            <h3 class="font-elegante text-xl mb-2">Ambiente Retrô</h3>
+            <p class="text-cinza-vintage">Cenários autênticos inspirados nas décadas de 50 a 70.</p>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <p class="font-script text-2xl text-dourado mb-6">"Mais que fotos — criamos memórias eternas."</p>
+          <button onclick="mostrarPagina('publico')" class="bg-marrom text-bege px-8 py-3 rounded-full hover:bg-marrom-claro transition-all">
+            <i class="fas fa-users mr-2"></i> Nosso Público
+          </button>
+        </div>
+      </div>
+    </div>
 
-<!-- Histórico -->
-<section id="historico" class="hidden info-section">
-  <h1>Histórico</h1>
-  <img src="historico.jpg" alt="Imagem histórica">
-  <p>A história da população negra é marcada por resistência e luta. Desde o período da escravidão até os movimentos contemporâneos, houve contínua busca por direitos e reconhecimento.</p>
-  <ul>
-    <li>Período da escravidão</li>
-    <li>Abolição e conquistas sociais</li>
-    <li>Movimentos pelos direitos civis</li>
-  </ul>
-</section>
+    <!-- 3. PÚBLICO -->
+    <div id="pagina-publico" class="pagina hidden">
+      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-2 border-bege-escuro text-center">
+        <i class="fas fa-users text-4xl text-dourado mb-4"></i>
+        <h2 class="font-vintage text-4xl text-marrom mb-6">Para Quem é o Vintage Studio?</h2>
+        <p class="font-elegante text-lg text-cinza-vintage mb-4">
+          Ideal para quem ama o estilo clássico, a arte e a nostalgia das décadas passadas.
+        </p>
+        <ul class="font-elegante text-cinza-vintage space-y-3">
+          <li>📷 Casais que buscam ensaios românticos e elegantes</li>
+          <li>🎞️ Famílias que querem registrar momentos únicos com charme retrô</li>
+          <li>👗 Modelos e artistas que amam o visual vintage</li>
+        </ul>
+        <div class="mt-8">
+          <button onclick="mostrarPagina('oferta')" class="bg-marrom text-bege px-8 py-3 rounded-full hover:bg-marrom-claro transition-all">
+            <i class="fas fa-gift mr-2"></i> Veja Nossa Promoção
+          </button>
+        </div>
+      </div>
+    </div>
 
-<!-- Consciência -->
-<section id="consciencia" class="hidden info-section">
-  <h1>Consciência</h1>
-  <img src="consciencia.jpg" alt="Imagem de consciência social">
-  <p>Promover a consciência racial envolve educação, diálogo e políticas de inclusão. É fundamental que todos compreendam a importância da igualdade e do respeito.</p>
-  <ul>
-    <li>Educação antirracista</li>
-    <li>Valorização da diversidade</li>
-    <li>Combate à discriminação</li>
-  </ul>
-</section>
+    <!-- 4. PROMOÇÃO -->
+    <div id="pagina-oferta" class="pagina hidden">
+      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-2 border-bege-escuro text-center">
+        <i class="fas fa-gift text-4xl text-dourado mb-4"></i>
+        <h2 class="font-vintage text-4xl text-marrom mb-6">Promoção Especial</h2>
+        <p class="font-elegante text-lg text-cinza-vintage mb-4">
+          Reserve seu ensaio até o final do mês e ganhe:
+        </p>
+        <ul class="font-elegante text-cinza-vintage mb-6 space-y-2">
+          <li>✨ 20% de desconto em qualquer pacote</li>
+          <li>🖼️ 1 ampliação vintage exclusiva</li>
+          <li>☕ Sessão com café e música retrô no ateliê</li>
+        </ul>
+        <button onclick="mostrarPagina('significado')" class="bg-marrom text-bege px-8 py-3 rounded-full hover:bg-marrom-claro transition-all">
+          <i class="fas fa-heart mr-2"></i> Descubra o Significado
+        </button>
+      </div>
+    </div>
 
-<!-- Literatura -->
-<section id="literatura" class="hidden info-section">
-  <h1>Literatura Negra</h1>
-  <div class="tab">
-    <button class="tablinks active" data-tab="autor1">Autor 1</button>
-    <button class="tablinks" data-tab="autor2">Autor 2</button>
-    <button class="tablinks" data-tab="autor3">Autor 3</button>
-    <button class="tablinks" data-tab="autor4">Autor 4</button>
-  </div>
+    <!-- 5. SIGNIFICADO -->
+    <div id="pagina-significado" class="pagina hidden">
+      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-2 border-bege-escuro text-center">
+        <i class="fas fa-heart text-4xl text-dourado mb-4"></i>
+        <h2 class="font-vintage text-4xl text-marrom mb-6">O Significado do Nosso Trabalho</h2>
+        <p class="font-elegante text-lg text-cinza-vintage leading-relaxed mb-8">
+          Cada fotografia é mais que uma imagem — é uma cápsula do tempo.  
+          Nosso compromisso é eternizar emoções com a mesma delicadeza com que a vida as cria.
+        </p>
+        <button onclick="mostrarPagina('slogan')" class="bg-marrom text-bege px-8 py-3 rounded-full hover:bg-marrom-claro transition-all">
+          <i class="fas fa-home mr-2"></i> Voltar ao Início
+        </button>
+      </div>
+    </div>
+  </main>
 
-  <div id="autor1" class="tabcontent" style="display:block;">
-    <img src="autor1.jpg" alt="Autor 1">
-    <p>Autor 1 é conhecido por suas obras que retratam a experiência afro-brasileira, abordando temas de identidade e resistência cultural.</p>
-  </div>
-
-  <div id="autor2" class="tabcontent" style="display:none;">
-    <img src="autor2.jpg" alt="Autor 2">
-    <p>Autor 2 explorou em seus livros as desigualdades sociais e a luta contra o racismo, trazendo narrativas fortes e impactantes.</p>
-  </div>
-
-  <div id="autor3" class="tabcontent" style="display:none;">
-    <img src="autor3.jpg" alt="Autor 3">
-    <p>Autor 3 escreveu sobre história, cultura e memória afrodescendente, incentivando a valorização da ancestralidade.</p>
-  </div>
-
-  <div id="autor4" class="tabcontent" style="display:none;">
-    <img src="autor4.jpg" alt="Autor 4">
-    <p>Autor 4 se destacou por suas poesias e contos que celebram a diversidade e a riqueza da cultura negra.</p>
-  </div>
-</section>
-
-<script>
-  // Alterna entre seções do menu
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const sections = document.querySelectorAll('section');
-
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      tabButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      sections.forEach(section => section.classList.add('hidden'));
-      const sectionId = button.dataset.section;
-      document.getElementById(sectionId).classList.remove('hidden');
-    });
-  });
-
-  // Troca de foto principal da galeria
-  function changePhoto(thumbnail, src) {
-    document.getElementById('main-photo').src = src;
-    document.querySelectorAll('.thumb').forEach(img => img.classList.remove('active'));
-    thumbnail.classList.add('active');
-  }
-
-  // Tabs da literatura negra
-  const tabLinks = document.querySelectorAll('.tablinks');
-  const tabContents = document.querySelectorAll('.tabcontent');
-
-  tabLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      tabLinks.forEach(btn => btn.classList.remove('active'));
-      link.classList.add('active');
-
-      tabContents.forEach(content => content.style.display = 'none');
-      const tabId = link.dataset.tab;
-      document.getElementById(tabId).style.display = 'block';
-    });
-  });
-</script>
+  <!-- SCRIPT -->
+  <script>
+    function mostrarPagina(pagina) {
+      document.querySelectorAll('.pagina').forEach(div => div.classList.remove('ativa'));
+      document.getElementById('pagina-' + pagina).classList.add('ativa');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 
 </body>
 </html>
