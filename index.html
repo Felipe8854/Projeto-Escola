@@ -64,16 +64,13 @@
         <img src="imagens/logo-vintage.png" alt="Logo Vintage Studio" class="mx-auto mb-6 w-40 h-auto opacity-90">
         <h2 class="font-script text-5xl text-marrom mb-4">Capturando Almas em Preto e Branco</h2>
         <p class="font-elegante text-lg text-cinza-vintage mb-6">Onde cada clique conta uma história atemporal.</p>
-        <p class="font-elegante text-lg text-cinza-vintage leading-relaxed mb-8">
-          No Vintage Studio, transformamos momentos em lembranças elegantes, com o charme único do estilo retrô.
-        </p>
         <button onclick="mostrarPagina('propaganda')" class="bg-marrom text-bege px-8 py-4 rounded-full hover:bg-marrom-claro transition-all">
           <i class="fas fa-arrow-right mr-2"></i> Conheça o Ateliê
         </button>
       </div>
     </div>
 
-    <!-- 2. PROPAGANDA / SOBRE O ATELIÊ -->
+    <!-- 2. ATELIÊ -->
     <div id="pagina-propaganda" class="pagina hidden">
       <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-2 border-bege-escuro">
         <div class="text-center mb-8">
@@ -81,7 +78,7 @@
           <h2 class="font-vintage text-4xl text-marrom">Por Que Escolher o Vintage Studio?</h2>
         </div>
 
-        <!-- SEÇÃO DE VÍDEO -->
+        <!-- VÍDEO -->
         <div class="text-center mb-10">
           <video controls class="mx-auto rounded-2xl shadow-lg border-2 border-bege-escuro w-full max-w-3xl">
             <source src="imagem/VID_20251113_104058_084.mp4" type="video/mp4">
@@ -111,7 +108,6 @@
         </div>
 
         <div class="text-center mt-10">
-          <p class="font-script text-2xl text-dourado mb-6">"Mais que fotos — criamos memórias eternas."</p>
           <button onclick="mostrarPagina('publico')" class="bg-marrom text-bege px-8 py-3 rounded-full hover:bg-marrom-claro transition-all">
             <i class="fas fa-arrow-right mr-2"></i> Conheça Nosso Público
           </button>
@@ -119,7 +115,7 @@
       </div>
     </div>
 
-    <!-- 3. PÚBLICO ALVO -->
+    <!-- 3. PÚBLICO -->
     <div id="pagina-publico" class="pagina hidden">
       <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-2 border-bege-escuro text-center">
         <i class="fas fa-users text-4xl text-marrom mb-4"></i>
@@ -152,7 +148,7 @@
           <p class="font-elegante text-lg">Pacote completo com sessão, revelação e álbum digital</p>
         </div>
         <button onclick="mostrarPagina('transformacao')" class="bg-dourado text-marrom px-8 py-3 rounded-full hover:bg-yellow-500 transition-all">
-          <i class="fas fa-sync-alt mr-2"></i> Veja a Transformação
+          <i class="fas fa-magic mr-2"></i> Veja a Transformação
         </button>
       </div>
     </div>
@@ -163,25 +159,23 @@
         <i class="fas fa-butterfly text-4xl text-dourado mb-4"></i>
         <h2 class="font-vintage text-3xl text-marrom mb-6">A Transformação Através da Fotografia</h2>
         <p class="font-elegante text-lg text-cinza-vintage leading-relaxed mb-6">
-          A fotografia tem o poder de revelar o que muitas vezes esquecemos: a nossa própria beleza, autenticidade e essência.
+          Cada retrato é mais do que uma imagem — é um reflexo da alma.  
+          No Vintage Studio, acreditamos que a fotografia tem o poder de transformar a maneira como a pessoa se enxerga.
         </p>
-        <p class="font-elegante text-lg text-cinza-vintage leading-relaxed mb-6">
-          No Vintage Studio, cada sessão é um convite à redescoberta. Não é apenas sobre poses e luzes, mas sobre enxergar-se com outros olhos —
-          os olhos da confiança, da nostalgia e do encanto de ser quem você é.
+        <p class="font-script text-2xl text-marrom italic mb-8">
+          “A verdadeira beleza floresce quando a luz encontra a essência.”
         </p>
-        <p class="font-script text-2xl text-dourado italic mt-6">
-          “A verdadeira transformação acontece quando a alma sorri diante da lente.”
-        </p>
+        <button onclick="mostrarPagina('significado')" class="bg-marrom text-bege px-8 py-3 rounded-full hover:bg-marrom-claro transition-all">
+          <i class="fas fa-arrow-right mr-2"></i> Ver Significado da Marca
+        </button>
       </div>
     </div>
 
-    <!-- 6. SIGNIFICADO DA MARCA -->
+    <!-- 6. SIGNIFICADO -->
     <div id="pagina-significado" class="pagina hidden">
-      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-2 border-bege-escuro">
-        <div class="text-center mb-8">
-          <i class="fas fa-book text-4xl text-dourado mb-4"></i>
-          <h2 class="font-vintage text-3xl text-marrom">O Significado da Marca</h2>
-        </div>
+      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-2 border-bege-escuro text-center">
+        <i class="fas fa-book text-4xl text-dourado mb-4"></i>
+        <h2 class="font-vintage text-3xl text-marrom mb-6">O Significado da Marca</h2>
         <p class="font-elegante text-lg text-cinza-vintage leading-relaxed mb-4">
           O nome <span class="text-marrom font-bold">Vintage Studio</span> nasce da ideia de eternizar momentos com a estética e o sentimento das décadas passadas.
           “Vintage” simboliza o valor do tempo, da autenticidade e da arte feita à mão.
@@ -192,9 +186,12 @@
           <span class="text-dourado">dourado</span> simboliza elegância,
           e <span class="text-bege">bege</span> traz leveza e acolhimento.
         </p>
-        <p class="font-script text-2xl text-marrom italic mt-8 text-center">
+        <p class="font-script text-2xl text-marrom italic mt-8 mb-8">
           “Mais do que um estúdio, somos um refúgio da nostalgia.”
         </p>
+        <button onclick="mostrarPagina('slogan')" class="bg-marrom text-bege px-8 py-3 rounded-full hover:bg-marrom-claro transition-all">
+          <i class="fas fa-home mr-2"></i> Voltar ao Início
+        </button>
       </div>
     </div>
   </main>
@@ -229,14 +226,6 @@
     .pagina { transition: opacity 0.4s ease-in-out; }
     .pagina.hidden { display: none; opacity: 0; }
     .pagina.ativa { display: block; opacity: 1; }
-
-    img {
-      transition: opacity 0.8s ease-in-out, transform 0.8s ease;
-    }
-    img:hover {
-      opacity: 1;
-      transform: scale(1.03);
-    }
   </style>
 </body>
 </html>
