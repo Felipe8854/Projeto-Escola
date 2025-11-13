@@ -1,0 +1,20 @@
+/* Este CSS é apenas para a animação de transição entre as "páginas" */
+.pagina { 
+    transition: opacity 0.4s ease-in-out; 
+}
+
+.pagina.hidden { 
+    display: none; 
+    opacity: 0; 
+}
+
+.pagina.ativa { 
+    display: block; 
+    opacity: 1; 
+}
+
+/*
+    Aviso: Todo o restante do estilo (cores, fontes, layout, espaçamento, 
+    etc.) é definido pelas classes do Tailwind diretamente no HTML, 
+    como: bg-bege, font-vintage, text-2xl, flex, etc.
+*/
